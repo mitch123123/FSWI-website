@@ -547,53 +547,26 @@
   <script src="js/main.js"></script>
     
   <script>
-    // Function to set a cookie
-    function setCookie(name, value, days) {
-      var expires = "";
-      if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    // Function to get a cookie
-    function getCookie(name) {
-      var nameEQ = name + "=";
-      var ca = document.cookie.split(';');
-      for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-      }
-      return null;
-    }
-
     // Get the modal
     var modal = document.getElementById("flyerModal");
     
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     
-    // Check if the popup has been shown before
+    // Show modal when page loads
     window.onload = function() {
-      if (!getCookie('flyerShown')) {
-        modal.style.display = "block";
-      }
+      modal.style.display = "block";
     }
     
-    // When the user clicks on <span> (x), close the modal and set cookie
+    // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
       modal.style.display = "none";
-      setCookie('flyerShown', 'true', 1); // Cookie expires in 1 day
     }
     
-    // When the user clicks anywhere outside of the modal, close it and set cookie
+    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
-        setCookie('flyerShown', 'true', 1); // Cookie expires in 1 day
       }
     }
   </script>
