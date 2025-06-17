@@ -343,3 +343,15 @@
 
 })(jQuery);
 
+document.getElementById('openFlyerBtn').onclick = function() {
+  document.getElementById('flyerModal').style.display = 'block';
+};
+document.getElementById('closeFlyerBtn').onclick = function() {
+  document.getElementById('flyerModal').style.display = 'none';
+};
+window.onclick = function(event) {
+  if (event.target == document.getElementById('flyerModal')) {
+    document.getElementById('flyerModal').style.display = 'none';
+  }
+};
+
