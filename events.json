@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Firefighter Safety Training",
+    "date": "2024-01-15",
+    "time": "09:00 AM - 05:00 PM",
+    "location": "FSWI Training Center, Chicago, IL",
+    "instructor": "Captain Sarah Johnson",
+    "description": "Comprehensive safety training covering personal protective equipment, scene safety, and emergency procedures.",
+    "additional": "CEU credits available. Lunch provided. Bring your own PPE.",
+    "category": "training"
+  },
+  {
+    "id": 2,
+    "title": "Leadership Development Workshop",
+    "date": "2025-09-22",
+    "time": "10:00 AM - 03:00 PM",
+    "location": "Illinois Fire Chiefs Association, Springfield, IL",
+    "instructor": "Chief Maria Rodriguez",
+    "description": "Develop essential leadership skills for fire service professionals. Topics include team building, communication, and decision-making.",
+    "additional": "Open to all ranks. Networking lunch included.",
+    "category": "workshop"
+  },
+  {
+    "id": 3,
+    "title": "Monthly FSWI Meeting",
+    "date": "2025-08-05",
+    "time": "07:00 PM - 09:00 PM",
+    "location": "Virtual Meeting (Zoom)",
+    "instructor": "FSWI Board Members",
+    "description": "Monthly membership meeting to discuss upcoming events, training opportunities, and organizational updates.",
+    "additional": "Zoom link will be sent to members 24 hours before the meeting.",
+    "category": "meeting"
+  },
+  {
+    "id": 4,
+    "title": "Emergency Medical Response Training",
+    "date": "2025-09-12",
+    "time": "08:00 AM - 04:00 PM",
+    "location": "Regional Medical Center, Peoria, IL",
+    "instructor": "Dr. Emily Chen",
+    "description": "Advanced emergency medical response training with hands-on practice and certification renewal.",
+    "additional": "Current EMT certification required. CEU credits provided.",
+    "category": "training"
+  },
+  {
+    "id": 5,
+    "title": "Women in Fire Service Conference",
+    "date": "2025-08-08",
+    "time": "08:00 AM - 06:00 PM",
+    "location": "Chicago Convention Center, Chicago, IL",
+    "instructor": "Various Speakers",
+    "description": "Annual conference celebrating women in the fire service with keynote speakers, workshops, and networking opportunities.",
+    "additional": "Early bird registration available until February 15th. Hotel discounts available.",
+    "category": "conference"
+  },
+  {
+    "id": 6,
+    "title": "Physical Fitness Workshop",
+    "date": "2025-09-15",
+    "time": "09:00 AM - 12:00 PM",
+    "location": "FSWI Fitness Center, Rockford, IL",
+    "instructor": "Fitness Specialist Lisa Thompson",
+    "description": "Workshop focused on maintaining physical fitness standards and preparing for CPAT testing.",
+    "additional": "Workout clothes required. Water provided.",
+    "category": "workshop"
+  },
+  {
+    "id": 7,
+    "title": "Fire Investigation Training",
+    "date": "2025-07-22",
+    "time": "08:00 AM - 05:00 PM",
+    "location": "Illinois State Fire Marshal Office, Springfield, IL",
+    "instructor": "Investigator Mark Davis",
+    "description": "Advanced fire investigation techniques and evidence collection procedures for fire service professionals.",
+    "additional": "Prerequisites: Basic fire investigation course. CEU credits available.",
+    "category": "training"
+  },
+  {
+    "id": 8,
+    "title": "Spring Networking Event",
+    "date": "2025-09-12",
+    "time": "06:00 PM - 09:00 PM",
+    "location": "Firefighters Union Hall, Chicago, IL",
+    "instructor": "FSWI Social Committee",
+    "description": "Spring networking event for FSWI members and supporters. Connect with fellow fire service professionals.",
+    "additional": "Light refreshments provided. RSVP required by April 5th.",
+    "category": "meeting"
+  },
+  {
+    "id": 9,
+    "title": "Hazmat Response Training",
+    "date": "2025-08-19",
+    "time": "09:00 AM - 04:00 PM",
+    "location": "Illinois Emergency Management Agency, Springfield, IL",
+    "instructor": "Hazmat Specialist Jennifer Wilson",
+    "description": "Hazardous materials response training with hands-on exercises and equipment familiarization.",
+    "additional": "PPE provided. Lunch included. Limited to 20 participants.",
+    "category": "training"
+  },
+  {
+    "id": 10,
+    "title": "Mental Health Awareness Workshop",
+    "date": "2025-08-23",
+    "time": "10:00 AM - 02:00 PM",
+    "location": "Virtual Workshop (Zoom)",
+    "instructor": "Dr. Lisa Martinez, Clinical Psychologist",
+    "description": "Mental health awareness and stress management workshop specifically designed for fire service professionals.",
+    "additional": "Free for FSWI members. Registration required. CEU credits available.",
+    "category": "workshop"
+  }
+] 

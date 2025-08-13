@@ -25,6 +25,348 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modern-support.css">
+
+    <!-- Modern Gallery Styles -->
+    <style>
+      .modern-gallery-section {
+        padding: 120px 0 80px;
+        background: #f5f3f0;
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+
+      /* Elegant Header */
+      .gallery-header {
+        text-align: center;
+        margin-bottom: 80px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .gallery-title {
+        font-size: 4rem;
+        font-weight: 200;
+        color: #2c2c2c;
+        margin-bottom: 20px;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        position: relative;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+
+      .gallery-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        font-weight: 300;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: 'Georgia', serif;
+        font-style: italic;
+      }
+
+      /* Category Labels */
+      .gallery-categories {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .category-left {
+        left: 40px;
+        text-align: left;
+      }
+
+      .category-right {
+        right: 40px;
+        text-align: right;
+      }
+
+      .category-label {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+        position: relative;
+        font-family: 'Nunito Sans', sans-serif;
+      }
+
+      .category-label::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 60px;
+        height: 1px;
+        background: #ddd;
+      }
+
+      .category-left .category-label::after {
+        left: 120px;
+      }
+
+      .category-right .category-label::after {
+        right: 120px;
+      }
+
+      /* Gallery Container */
+      .gallery-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 100px;
+        position: relative;
+      }
+
+      /* Artistic Grid Layout */
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(8, 120px);
+        gap: 20px;
+        position: relative;
+      }
+
+      /* Gallery Items with Artistic Sizing */
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        background: #fff;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        border-radius: 0;
+      }
+
+      /* Specific grid positioning for artistic layout */
+      .gallery-item:nth-child(1) { grid-column: 1 / 5; grid-row: 1 / 4; }
+      .gallery-item:nth-child(2) { grid-column: 5 / 9; grid-row: 2 / 5; }
+      .gallery-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 3; }
+      .gallery-item:nth-child(4) { grid-column: 1 / 4; grid-row: 4 / 7; }
+      .gallery-item:nth-child(5) { grid-column: 4 / 8; grid-row: 5 / 8; }
+      .gallery-item:nth-child(6) { grid-column: 8 / 13; grid-row: 3 / 6; }
+      .gallery-item:nth-child(7) { grid-column: 1 / 6; grid-row: 7 / 9; }
+      .gallery-item:nth-child(8) { grid-column: 6 / 10; grid-row: 8 / 9; }
+      .gallery-item:nth-child(9) { grid-column: 10 / 13; grid-row: 6 / 9; }
+      .gallery-item:nth-child(10) { grid-column: 2 / 6; grid-row: 3 / 5; }
+      .gallery-item:nth-child(11) { grid-column: 7 / 11; grid-row: 1 / 2; }
+      .gallery-item:nth-child(12) { grid-column: 11 / 13; grid-row: 4 / 5; }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Image Styling */
+      .gallery-image {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: grayscale(20%) contrast(1.1);
+      }
+
+      .gallery-item:hover .gallery-image {
+        transform: scale(1.05);
+        filter: grayscale(0%) contrast(1.2);
+      }
+
+      /* Minimalist Overlay */
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.02);
+        opacity: 0;
+        transition: all 0.4s ease;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 30px;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      /* Elegant Icon */
+      .gallery-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2c2c2c;
+        transform: scale(0.8);
+        transition: all 0.4s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-item:hover .gallery-icon {
+        transform: scale(1);
+      }
+
+      
+
+    
+
+     
+
+
+      
+      /* Enhanced Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(245, 243, 240, 0.98);
+        backdrop-filter: blur(20px);
+        transition: all 0.4s ease;
+      }
+
+      .lightbox-content {
+        display: block;
+        margin: auto;
+        max-width: 85%;
+        max-height: 85%;
+        object-fit: contain;
+        border-radius: 0;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        color: #2c2c2c;
+        font-size: 2rem;
+        font-weight: 200;
+        cursor: pointer;
+        z-index: 10001;
+        transition: all 0.3s ease;
+        width: 60px;
+        height: 60px;
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 40px;
+        z-index: 10001;
+      }
+
+      .lightbox-prev,
+      .lightbox-next {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #2c2c2c;
+        font-size: 1.5rem;
+        padding: 20px;
+        cursor: pointer;
+        border-radius: 0;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        font-weight: 200;
+      }
+
+      .lightbox-prev:hover,
+      .lightbox-next:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .photo-gallery {
+          grid-template-columns: repeat(8, 1fr);
+          grid-template-rows: repeat(10, 100px);
+          gap: 15px;
+        }
+        
+        .gallery-container {
+          padding: 0 60px;
+        }
+        
+        .category-left, .category-right {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .gallery-title {
+          font-size: 2.5rem;
+          letter-spacing: 4px;
+        }
+        
+        .photo-gallery {
+          grid-template-columns: repeat(6, 1fr);
+          grid-template-rows: repeat(12, 80px);
+          gap: 10px;
+        }
+        
+        .gallery-container {
+          padding: 0 20px;
+        }
+        
+        .gallery-nav {
+          display: none;
+        }
+        
+        .gallery-footer {
+          bottom: 20px;
+        }
+        
+        .footer-text {
+          font-size: 0.8rem;
+          max-width: 300px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .photo-gallery {
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(15, 70px);
+          gap: 8px;
+        }
+        
+        .gallery-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+
   </head>
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -36,7 +378,9 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>        	
+	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>   
+            <li class="nav-item"><a href="documents.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="schedule.html" class="nav-link">Training Schedule</a></li>     	
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
@@ -137,48 +481,49 @@
 #openFlyerBtn {
   display: none;
 }
+
+/* Ensure loader doesn't block content */
+#ftco-loader {
+  z-index: 9998;
+}
+
+/* Ensure modal appears above loader */
+.modal {
+  z-index: 9999;
+}
+
+/* Gradient header style */
+.gradient-header {
+  background: linear-gradient(40deg, #1b3ac6 0%, #55e3e3 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+ 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 </style>
 
     <div class="hero-wrap" style="background-image: url('images/a6.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
-          <div class="col-md-6 order-md-last ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Fire Service Women of Illinois</h1>
-            <p><a href="#abt" class="btn btn-black py-3 px-4">Who are we</a></p>
+          <div class="col-md-6 order-md-last ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }" data-animate-effect="fadeInRight">
+            <h1 class="mb-4 gradient-header" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Fire Service Women of Illinois</h1>
+            
           </div>
          
         </div>
       </div>
     </div>
-
-    <section class="ftco-section ftco-no-pt ftco-no-pb ftco-volunteer">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-7 img-volunteer" style="background-image: url(images/fbcover2.png);">
-    				<div class="row no-gutters justify-content-end">
-    					<div class="col-lg-10">
-    						<div class="text py-7 pl-md-4 pr-md-3">
-                  <h2 style="color:rgb(255, 255, 255);background-color: rgba(0, 0, 0, 0.404)"class="mb-5">Follow us on social media for live updates!</h2>
-    							<p style="color:white;background-color: rgba(0, 0, 0, 0.404)">We post new training sessions, get togethers, and pictures of the amazing FSWI!</p>
-    							<p><a href="https://www.facebook.com/FireServiceWomenofIllinios/" style="margin-left:33%;"class="btn btn-black py-3 px-5">Follow</a></p>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-md-5 d-flex align-items-center bg-black">
-    				<div class="about-text py-5 pl-md-5">
-    					<h2>Want to support the FSWI? Get some awesome merch from <a href="https://www.etsy.com/shop/FSWI?ref=shop_sugg">etsy!</a></h2>
-    					<p>The Fire Service Women of Illinois also have a paypal donation box!     
-              </p>
-    					<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=admin%40fswi.org&item_name=Fire+Service+Women+of+Ilinois+donation+box&currency_code=USD&source=url" class="btn btn-primary py-3 px-4">Donate now</a></p>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-
-    <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb">
+    <section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb ftco-animate" data-animate-effect="fadeInUp">
     	<div class="container">
     		<div class="row d-flex">
     			<div class="col-md-6 col-lg-5 d-flex">
@@ -188,7 +533,7 @@
     			<div id="abt"class="col-md-6 col-lg-7 pl-lg-5 py-5">
     				<div class="py-md-5">
 	    				<div class="row justify-content-start pb-3">
-			          <div class="col-md-12 heading-section ftco-animate">
+			          <div class="col-md-12 heading-section ftco-animate" data-animate-effect="fadeInUp">
 			          	<span  class="subheading"></a>A Few Words About Us</span>
 			            <h2 class="mb-4">We Have Been Helping Women For <span class="number" data-number="18">0</span> Years</h2>
 			            <p>The Fire Service Women of Illinois 
@@ -202,45 +547,10 @@
     	</div>
     </section>
 
-    <section class="services-section py-5 py-md-0 bg-light">
-      <div class="container">
-        <div class="row no-gutters d-flex">
-          <div style="margin-left:15%;"class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block">
-              <div class="icon"><span class="flaticon-charity"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Help &amp; Support</h3>
-                <p>	We create a supportive community for all FSWI to interact and network</p>
-              </div>
-            </div>      
-          </div>
-          
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services  d-block">
-              <div class="icon"><span class="flaticon-volunteer"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Volunteering</h3>
-                <p>We also give back to the community </p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block">
-              <div class="icon"><span class="flaticon-open-book"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Education</h3>
-                <p>We host training courses and meetups for you to be the best Firefighter you can be!</p>
-              </div>
-            </div>      
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="ftco-mission">
     	<div class="container">
     		<div class="row">
-    			<div class="col-md-4 py-4 py-md-5 ftco-animate">
+    			<div class="col-md-4 py-4 py-md-5 ftco-animate" data-animate-effect="fadeInUp">
     				<div class="py-md-4 pb-md-5">
 	    				<h3>Mission</h3>
 	    				<p>Fire Service Women of Illinois is dedicated to the advancement of education,
@@ -249,7 +559,7 @@
                 actively participate in shaping the future of the fire service through training.</p>
     				</div>
     			</div>
-    			<div class="col-md-4 py-4 py-md-5 ftco-animate">
+    			<div class="col-md-4 py-4 py-md-5 ftco-animate" data-animate-effect="fadeInUp">
     				<div class="py-md-4 pb-md-5">
 	    				<h3>Vision</h3>
 	    				<p>We would like to eventually have every Fire Service Women of Illinois be a part of our group!</p>
@@ -259,202 +569,1192 @@
     		</div>
     	</div>
     </section>
-   	
-   	<section class="testimony-section">
+    
+    <section class="modern-support-section ftco-animate" data-animate-effect="fadeInUp">
       <div class="container">
-        <div class="row ftco-animate justify-content-center">
-        	<div class="col-md-6 d-flex">
-        		<div class="testimony-img" style="background-image: url(images/a1tt2.png);margin-bottom: 30px;"></div>
-        	</div>
-          <div class="col-md-6 py-5">
-          	<div class="heading-section heading-section-white pt-4 ftco-animate">
-		          <h2 class="mb-0">Memories</h2>
-		        </div>
-            <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item"style="background-image: url(images/2009_08220011s.jpg);background-position: center;background-size: cover;">
-                <div class="testimony-wrap pb-4">
-                  <div class="text">
-                  <br><br><br><br>
-                  </div>
-                  <div class="d-flex">
-	                  
-	                  <div class="pos ml-3">
-	                  	
-	                  </div>
-	                </div>
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-8 text-center">
+            <h2 class="modern-section-title">What We Do & How You Can Help</h2>
+            <p class="modern-section-subtitle">Empowering women in fire service through support, education, and community</p>
+          </div>
+        </div>
+        
+        <!-- What We Do Cards -->
+        <div class="row justify-content-center mb-5">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="modern-support-card service-card">
+              <div class="card-content">
+                <div class="card-icon">
+                  <span class="icon-envelope"></span>
                 </div>
+                <h3>Help & Support</h3>
+                <p>We create a supportive community for all FSWI to interact and network</p>
+                <ul class="feature-list">
+                  <li>Peer mentoring programs</li>
+                  <li>24/7 support network</li>
+                  <li>Professional development</li>
+                </ul>
               </div>
-              <div class="item"style="background-image: url(images/2009_08220050s.jpg);background-position: center;background-size: cover;">
-                <div class="testimony-wrap pb-4">
-                  <div class="text">
-                  <br><br><br><br>
-                  </div>
-                  <div class="d-flex">
-	                  
-	                  <div class="pos ml-3">
-	                  	
-	                  </div>
-	                </div>
-                </div>
-              </div>
-              <div class="item"style="background-image: url(images/2009_08220085s.jpg);background-position: center;background-size: cover;">
-                <div class="testimony-wrap pb-4">
-                  <div class="text">
-                  <br><br><br><br>
-                  </div>
-                  <div class="d-flex">
-	                  
-	                  <div class="pos ml-3">
-	                  	
-	                  </div>
-	                </div>
-                </div>
-              </div>
-              <div class="item"style="background-image: url(images/DSC_0097.jpg);background-position: center;background-size: cover;">
-                <div class="testimony-wrap pb-4">
-                  <div class="text">
-                  <br><br><br><br>
-                  </div>
-                  <div class="d-flex">
-	                  
-	                  <div class="pos ml-3">
-	                  	
-	                  </div>
-	                </div>
-                </div>
-              </div>
-              <div class="item"style="background-image: url(images/DSC_0042.jpg);background-position: center;background-size: cover;">
-                <div class="testimony-wrap pb-4">
-                  <div class="text">
-                  <br><br><br><br>
-                  </div>
-                  <div class="d-flex">
-	                  
-	                  <div class="pos ml-3">
-	                  	
-	                  </div>
-	                </div>
-                </div>
-              </div>
-              <div class="item"style="background-image: url(images/DSC_0053.jpg);background-position: center;background-size: cover;">
-                <div class="testimony-wrap pb-4">
-                  <div class="text">
-                  <br><br><br><br>
-                  </div>
-                  <div class="d-flex">
-	                  
-	                  <div class="pos ml-3">
-	                  	
-	                  </div>
-	                </div>
-                </div>
-              </div>
-              <div class="item"style="background-image: url(images/IMG_7367.jpg);background-position: center;background-size: cover;">
-                <div class="testimony-wrap pb-4">
-                  <div class="text">
-                  <br><br><br><br>
-                  </div>
-                  <div class="d-flex">
-	                  
-	                  <div class="pos ml-3">
-	                  	
-	                  </div>
-	                </div>
-                </div>
-              </div>
-                <div class="item"style="background-image: url(images/IMG_7097.jpg);background-position: center;background-size: cover;">
-                  <div class="testimony-wrap pb-4">
-                    <div class="text">
-                    <br><br><br><br>
-                    </div>
-                    <div class="d-flex">
-                      
-                      <div class="pos ml-3">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item"style="background-image: url(images/DSC_0071.jpg);background-position: center;background-size: cover;">
-                  <div class="testimony-wrap pb-4">
-                    <div class="text">
-                    <br><br><br><br>
-                    </div>
-                    <div class="d-flex">
-                      
-                      <div class="pos ml-3">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item"style="background-image: url(images/DSC_0138.jpg);background-position: center;background-size: cover;">
-                  <div class="testimony-wrap pb-4">
-                    <div class="text">
-                    <br><br><br><br>
-                    </div>
-                    <div class="d-flex">
-                      
-                      <div class="pos ml-3">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item"style="background-image: url(images/DSC_4100.jpg);background-position: center;background-size: cover;">
-                  <div class="testimony-wrap pb-4">
-                    <div class="text">
-                    <br><br><br><br>
-                    </div>
-                    <div class="d-flex">
-                      
-                      <div class="pos ml-3">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item"style="background-image: url(images/IMG_7274.jpg);background-position: center;background-size: cover;">
-                  <div class="testimony-wrap pb-4">
-                    <div class="text">
-                    <br><br><br><br>
-                    </div>
-                    <div class="d-flex">
-                      
-                      <div class="pos ml-3">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item"style="background-image: url(images/IMG_7289.jpg);background-position: center;background-size: cover;">
-                  <div class="testimony-wrap pb-4">
-                    <div class="text">
-                    <br><br><br><br>
-                    </div>
-                    <div class="d-flex">
-                      
-                      <div class="pos ml-3">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item"style="background-image: url(images/IMG_7320.jpg);background-position: center;background-size: cover;">
-                  <div class="testimony-wrap pb-4">
-                    <div class="text">
-                    <br><br><br><br>
-                    </div>
-                    <div class="d-flex">
-                      
-                      <div class="pos ml-3">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
             </div>
           </div>
+          
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="modern-support-card service-card">
+              <div class="card-content">
+                <div class="card-icon">
+                  <span class="icon-heart"></span>
+                </div>
+                <h3>Volunteering</h3>
+                <p>We also give back to the community</p>
+                <ul class="feature-list">
+                  <li>Community outreach</li>
+                  <li>Charity events</li>
+                  <li>Public safety education</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="modern-support-card service-card">
+              <div class="card-content">
+                <div class="card-icon">
+                  <span class="icon-graduation-cap"></span>
+                </div>
+                <h3>Education</h3>
+                <p>We host training courses and meetups for you to be the best Firefighter you can be!</p>
+                <ul class="feature-list">
+                  <li>Certification courses</li>
+                  <li>Skill workshops</li>
+                  <li>Leadership training</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Support & Connect Cards -->
+        <div class="row justify-content-center">
+          <div class="col-12 text-center mb-4">
+            <h3 class="text-white" style="font-size: 2rem; font-weight: 600;">Join Our Mission</h3>
+            <p class="text-white-50" style="font-size: 1.1rem;">Connect with our community and support our work</p>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Social Media Card -->
+          <div class="col-lg-6 mb-4">
+            <div class="modern-support-card social-card">
+              <div class="card-background" style="background-image: url(images/fbcover2.png);"></div>
+              <div class="card-content">
+                <div class="card-icon">
+                  <span class="icon-facebook"></span>
+                </div>
+                <h3>Follow Our Journey</h3>
+                <p>Stay connected with live updates, training sessions, and amazing moments from the FSWI community.</p>
+                <ul class="feature-list">
+                  <li>Live training session updates</li>
+                  <li>Community meetups & events</li>
+                  <li>Behind-the-scenes photos</li>
+                </ul>
+                <a href="https://www.facebook.com/FireServiceWomenofIllinios/" class="btn btn-modern-flashy">
+                  <span class="btn-text">Follow on Facebook</span>
+                  <span class="btn-icon">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Support Card -->
+          <div class="col-lg-6 mb-4">
+            <div class="modern-support-card support-card">
+              <div class="card-content">
+                <div class="card-icon">
+                  <span class="icon-heart"></span>
+                </div>
+                <h3>Support Our Mission</h3>
+                <p>Help us continue empowering women in fire service through your generous support.</p>
+                <div class="support-options">
+                  <div class="support-option">
+                    <h4>Get Awesome Merch</h4>
+                    <p>Show your support with FSWI merchandise from our Etsy shop</p>
+                    <a href="https://www.etsy.com/shop/FSWI?ref=shop_sugg" class="btn btn-modern-flashy btn-sm">
+                      <span class="btn-text">Shop Now</span>
+                      <span class="btn-icon">🛍️</span>
+                    </a>
+                  </div>
+                  <div class="support-option">
+                    <h4>Make a Donation</h4>
+                    <p>Your donation helps fund training programs and community outreach</p>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=admin%40fswi.org&item_name=Fire+Service+Women+of+Ilinois+donation+box&currency_code=USD&source=url" class="btn btn-modern-flashy btn-sm">
+                      <span class="btn-text">Donate Now</span>
+                      <span class="btn-icon">❤️</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Animated Background -->
+        <div class="training-bg-animation"></div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+          <div class="row align-items-center">
+            <!-- Side Title Column -->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+              <div class="training-title-side">
+                <span class="subheading" style="color: #667eea; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Professional Development</span>
+                <h2 class="mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900; font-size: 2.5rem;">Training Ideas for Fire Service Women</h2>
+                <p style="color: #666; font-size: 1.1rem; line-height: 1.6;">Empowering women in the fire service through specialized training and skill development</p>
+                
+                <!-- Carousel Navigation -->
+                <div class="carousel-nav mt-4">
+                  <button class="nav-dot active" data-slide="0"></button>
+                  <button class="nav-dot" data-slide="1"></button>
+                  <button class="nav-dot" data-slide="2"></button>
+                  <button class="nav-dot" data-slide="3"></button>
+                  <button class="nav-dot" data-slide="4"></button>
+                  <button class="nav-dot" data-slide="5"></button>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="carousel-progress mt-3">
+                  <div class="progress-bar-fill"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Carousel Column -->
+            <div class="col-lg-8">
+              <div class="training-carousel-container">
+                <div class="training-carousel">
+                  <!-- Physical Fitness & Conditioning -->
+                  <div class="carousel-slide active">
+                    <div class="training-card-modern">
+                      <div class="card-glow"></div>
+                      <div class="card-content">
+                        <div class="training-icon-modern">
+                          <i class="icon-heart"></i>
+                        </div>
+                        <h4 class="card-title-modern">Physical Fitness & Conditioning</h4>
+                        <ul class="training-list-modern">
+                          <li>Strength training for firefighting tasks</li>
+                          <li>Cardiovascular endurance building</li>
+                          <li>Functional movement training</li>
+                          <li>Proper lifting techniques</li>
+                          <li>Nutrition for performance</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Leadership Development -->
+                  <div class="carousel-slide">
+                    <div class="training-card-modern">
+                      <div class="card-glow"></div>
+                      <div class="card-content">
+                        <div class="training-icon-modern">
+                          <i class="icon-star"></i>
+                        </div>
+                        <h4 class="card-title-modern">Leadership Development</h4>
+                        <ul class="training-list-modern">
+                          <li>Command presence and communication</li>
+                          <li>Decision-making under pressure</li>
+                          <li>Team building and motivation</li>
+                          <li>Conflict resolution skills</li>
+                          <li>Mentoring and coaching</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Technical Skills -->
+                  <div class="carousel-slide">
+                    <div class="training-card-modern">
+                      <div class="card-glow"></div>
+                      <div class="card-content">
+                        <div class="training-icon-modern">
+                          <i class="icon-wrench"></i>
+                        </div>
+                        <h4 class="card-title-modern">Technical Skills</h4>
+                        <ul class="training-list-modern">
+                          <li>Advanced firefighting techniques</li>
+                          <li>Hazmat operations</li>
+                          <li>Technical rescue operations</li>
+                          <li>Fire investigation basics</li>
+                          <li>Equipment maintenance</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Mental Health & Wellness -->
+                  <div class="carousel-slide">
+                    <div class="training-card-modern">
+                      <div class="card-glow"></div>
+                      <div class="card-content">
+                        <div class="training-icon-modern">
+                          <i class="icon-heart"></i>
+                        </div>
+                        <h4 class="card-title-modern">Mental Health & Wellness</h4>
+                        <ul class="training-list-modern">
+                          <li>Stress management techniques</li>
+                          <li>PTSD awareness and prevention</li>
+                          <li>Peer support programs</li>
+                          <li>Work-life balance strategies</li>
+                          <li>Resilience building</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Career Advancement -->
+                  <div class="carousel-slide">
+                    <div class="training-card-modern">
+                      <div class="card-glow"></div>
+                      <div class="card-content">
+                        <div class="training-icon-modern">
+                          <i class="icon-arrow-circle-up"></i>
+                        </div>
+                        <h4 class="card-title-modern">Career Advancement</h4>
+                        <ul class="training-list-modern">
+                          <li>Promotion preparation</li>
+                          <li>Certification pathways</li>
+                          <li>Professional networking</li>
+                          <li>Continuing education</li>
+                          <li>Specialization opportunities</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <!-- Community Outreach -->
+                  <div class="carousel-slide">
+                    <div class="training-card-modern">
+                      <div class="card-glow"></div>
+                      <div class="card-content">
+                        <div class="training-icon-modern">
+                          <i class="icon-users"></i>
+                        </div>
+                        <h4 class="card-title-modern">Community Outreach</h4>
+                        <ul class="training-list-modern">
+                          <li>Public education programs</li>
+                          <li>Fire prevention campaigns</li>
+                          <li>School presentations</li>
+                          <li>Community event planning</li>
+                          <li>Media relations</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Carousel Controls -->
+                <div class="carousel-controls">
+                  <button class="carousel-btn prev-btn" aria-label="Previous slide">
+                    <i class="icon-arrow-left"></i>
+                  </button>
+                  <button class="carousel-btn next-btn" aria-label="Next slide">
+                    <i class="icon-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Call to Action -->
+          <div class="row justify-content-center mt-5">
+            <div class="col-md-8 text-center">
+              <div class="training-cta-modern">
+                <h3 class="mb-3">Ready to Enhance Your Skills?</h3>
+                <p class="mb-4">Join our training programs and connect with other fire service women who are passionate about professional development and excellence.</p>
+                <a href="#contact" class="btn btn-modern-flashy py-3 px-5 mr-3">Contact Us</a>
+                <a href="https://www.facebook.com/FireServiceWomenofIllinios/" class="btn btn-modern-flashy py-3 px-5">Follow for Updates</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </section>
+
+   
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb bg-white">
+      <div class="container" style="margin-top: 25px; margin-bottom: 25px;">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate" data-animate-effect="fadeInUp">
+            
+            <h2 class="mb-4">Meet Our Leadership</h2>
+            <p>Our dedicated board members work tirelessly to advance the mission of Fire Service Women of Illinois</p>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Board Member 1 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait1.jpg" alt="Sarah Johnson" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Sarah Johnson</h4>
+                      <p class="member-title">President</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Sarah Johnson</h4>
+                    <p class="member-title">President</p>
+                    <p class="member-bio">Sarah has been serving in the fire service for over 15 years. She is passionate about mentoring new firefighters and creating opportunities for women in the field. Sarah leads our organization with dedication and vision.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Training Coordinator</span>
+                      <span class="badge badge-secondary">Mentor</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 2 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait2.jpg" alt="Maria Rodriguez" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Maria Rodriguez</h4>
+                      <p class="member-title">Vice President</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Maria Rodriguez</h4>
+                    <p class="member-title">Vice President</p>
+                    <p class="member-bio">Maria brings 12 years of experience in emergency medical services and firefighting. She specializes in community outreach and developing partnerships with local fire departments across Illinois.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Community Outreach</span>
+                      <span class="badge badge-secondary">EMS Specialist</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 3 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait3.jpg" alt="Jennifer Williams" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Jennifer Williams</h4>
+                      <p class="member-title">Secretary</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Jennifer Williams</h4>
+                    <p class="member-title">Secretary</p>
+                    <p class="member-bio">Jennifer has been instrumental in organizing our events and maintaining communication with our members. Her background in administration and fire service spans over 10 years.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Event Coordinator</span>
+                      <span class="badge badge-secondary">Administrator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 4 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait4.jpg" alt="Amanda Thompson" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Amanda Thompson</h4>
+                      <p class="member-title">Treasurer</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Amanda Thompson</h4>
+                    <p class="member-title">Treasurer</p>
+                    <p class="member-bio">Amanda manages our organization's finances and fundraising efforts. With her background in both firefighting and financial management, she ensures our resources are used effectively to support our mission.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Finance Manager</span>
+                      <span class="badge badge-secondary">Fundraiser</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 5 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait5.jpg" alt="Lisa Chen" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Lisa Chen</h4>
+                      <p class="member-title">Board Member</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Lisa Chen</h4>
+                    <p class="member-title">Board Member</p>
+                    <p class="member-bio">Lisa focuses on professional development and continuing education programs. She has been a firefighter for 8 years and is committed to helping women advance their careers in the fire service.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Professional Development</span>
+                      <span class="badge badge-secondary">Educator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 6 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait6.jpg" alt="Rebecca Davis" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Rebecca Davis</h4>
+                      <p class="member-title">Board Member</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Rebecca Davis</h4>
+                    <p class="member-title">Board Member</p>
+                    <p class="member-bio">Rebecca leads our networking initiatives and social media presence. She has 6 years of experience and is passionate about connecting women firefighters across the state.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Networking</span>
+                      <span class="badge badge-secondary">Social Media</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+   
+    </style>
+
+    <!-- Training Ideas Section -->
+    
+
+      <!-- Modern Training Section Styles -->
+      <style>
+        .training-bg-animation {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+          background-size: 400% 400%;
+          animation: gradientShift 12s ease infinite;
+          opacity: 0.03;
+          z-index: 1;
+          will-change: background-position;
+        }
+
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        /* Side Title Styles */
+        .training-title-side {
+          padding: 2rem;
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 20px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          position: sticky;
+          top: 2rem;
+        }
+
+        /* Carousel Container */
+        .training-carousel-container {
+          position: relative;
+          overflow: hidden;
+          border-radius: 20px;
+          background: rgba(255, 255, 255, 0.95);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .training-carousel {
+          display: flex;
+          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          height: 500px;
+        }
+
+        .carousel-slide {
+          min-width: 100%;
+          padding: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+
+        .carousel-slide.active {
+          opacity: 1;
+        }
+
+        /* Carousel Navigation Dots */
+        .carousel-nav {
+          display: flex;
+          gap: 0.5rem;
+          justify-content: center;
+        }
+
+        .nav-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          border: none;
+          background: rgba(102, 126, 234, 0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+
+        .nav-dot.active {
+          background: #667eea;
+          transform: scale(1.2);
+        }
+
+        .nav-dot:hover {
+          background: rgba(102, 126, 234, 0.6);
+          transform: scale(1.1);
+        }
+
+        /* Progress Bar */
+        .carousel-progress {
+          width: 100%;
+          height: 4px;
+          background: rgba(102, 126, 234, 0.2);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+
+        .progress-bar-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+          width: 16.67%;
+          transition: width 0.5s ease;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: space-between;
+          padding: 0 1rem;
+          pointer-events: none;
+        }
+
+        .carousel-btn {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: none;
+          background: rgba(255, 255, 255, 0.9);
+          color: #667eea;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          pointer-events: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .carousel-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: scale(1.1);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .carousel-btn:active {
+          transform: scale(0.95);
+        }
+
+        /* Training Card Styles */
+        .training-card-modern {
+          position: relative;
+          background: rgba(255, 255, 255, 0.98);
+          border-radius: 20px;
+          padding: 2rem;
+          height: 100%;
+          width: 100%;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          overflow: hidden;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        .training-card-modern:hover {
+          transform: translateY(-6px) translateZ(0);
+          box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .card-glow {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          border-radius: 20px;
+          z-index: -1;
+          will-change: opacity;
+        }
+
+        .training-card-modern:hover .card-glow {
+          opacity: 0.05;
+        }
+
+        .training-icon-modern {
+          text-align: center;
+          margin-bottom: 1.5rem;
+          position: relative;
+        }
+
+        .training-icon-modern i {
+          font-size: 3.5rem;
+          color: #667eea;
+          transition: transform 0.2s ease;
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        .training-card-modern:hover .training-icon-modern i {
+          transform: scale(1.03) translateZ(0);
+          color: #764ba2;
+        }
+
+        .card-title-modern {
+          text-align: center;
+          margin-bottom: 1.5rem;
+          font-weight: 700;
+          font-size: 1.3rem;
+          color: #2c3e50;
+          transition: color 0.2s ease;
+        }
+
+        .training-card-modern:hover .card-title-modern {
+          color: #667eea;
+        }
+
+        .training-list-modern {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 1.5rem 0;
+        }
+
+        .training-list-modern li {
+          padding: 0.5rem 0;
+          color: #666;
+          font-size: 0.95rem;
+          position: relative;
+          padding-left: 1.5rem;
+          transition: color 0.2s ease;
+        }
+
+        .training-list-modern li::before {
+          content: '▶';
+          position: absolute;
+          left: 0;
+          color: #667eea;
+          font-size: 0.8rem;
+          transition: color 0.2s ease;
+        }
+
+        .training-card-modern:hover .training-list-modern li {
+          color: #2c3e50;
+        }
+
+        .training-card-modern:hover .training-list-modern li::before {
+          color: #764ba2;
+        }
+
+        .training-cta-modern {
+          background: rgba(255, 255, 255, 0.98);
+          border-radius: 20px;
+          padding: 3rem;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+          position: relative;
+          overflow: hidden;
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        .training-cta-modern::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          opacity: 0.03;
+          z-index: -1;
+        }
+
+        .training-cta-modern h3 {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 700;
+          font-size: 2rem;
+        }
+
+        .training-cta-modern p {
+          color: #666;
+          font-size: 1.1rem;
+          line-height: 1.6;
+        }
+
+        /* Performance optimizations */
+        .training-card-modern,
+        .training-cta-modern {
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 991px) {
+          .training-title-side {
+            position: static;
+            margin-bottom: 2rem;
+          }
+          
+          .training-carousel {
+            height: 450px;
+          }
+          
+          .carousel-slide {
+            padding: 1.5rem;
+          }
+          
+          .training-card-modern {
+            padding: 1.5rem;
+          }
+          
+          .carousel-controls {
+            padding: 0 0.5rem;
+          }
+          
+          .carousel-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .training-carousel {
+            height: 400px;
+          }
+          
+          .training-card-modern {
+            padding: 1rem;
+          }
+          
+          .training-cta-modern {
+            padding: 2rem;
+          }
+          
+          .training-cta-modern h3 {
+            font-size: 1.5rem;
+          }
+          
+          .training-bg-animation {
+            animation: gradientShift 16s ease infinite;
+          }
+        }
+
+        /* Disable animations for users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .training-bg-animation {
+            animation: none;
+          }
+          
+          .training-carousel {
+            transition: none;
+          }
+          
+          .carousel-slide {
+            transition: none;
+          }
+          
+          .training-card-modern,
+          .training-icon-modern i,
+          .training-list-modern li::before,
+          .nav-dot,
+          .carousel-btn {
+            transition: none;
+          }
+          
+          .training-card-modern:hover {
+            transform: none;
+          }
+        }
+      </style>
+    
+      <!-- Carousel JavaScript -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const carousel = document.querySelector('.training-carousel');
+          const slides = document.querySelectorAll('.carousel-slide');
+          const dots = document.querySelectorAll('.nav-dot');
+          const prevBtn = document.querySelector('.prev-btn');
+          const nextBtn = document.querySelector('.next-btn');
+          const progressBar = document.querySelector('.progress-bar-fill');
+          
+          let currentSlide = 0;
+          const totalSlides = slides.length;
+          
+          // Initialize carousel
+          function initCarousel() {
+            updateSlide();
+            updateProgress();
+            startAutoPlay();
+          }
+          
+          // Update slide display
+          function updateSlide() {
+            slides.forEach((slide, index) => {
+              slide.classList.toggle('active', index === currentSlide);
+            });
+            
+            dots.forEach((dot, index) => {
+              dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+          }
+          
+          // Update progress bar
+          function updateProgress() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+          }
+          
+          // Go to specific slide
+          function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+            updateProgress();
+            resetAutoPlay();
+          }
+          
+          // Next slide
+          function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide();
+            updateProgress();
+            resetAutoPlay();
+          }
+          
+          // Previous slide
+          function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide();
+            updateProgress();
+            resetAutoPlay();
+          }
+          
+          // Auto-play functionality
+          let autoPlayInterval;
+          
+          function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 5000);
+          }
+          
+          function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+          }
+          
+          // Event listeners
+          dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+          });
+          
+          prevBtn.addEventListener('click', prevSlide);
+          nextBtn.addEventListener('click', nextSlide);
+          
+          // Keyboard navigation
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+              prevSlide();
+            } else if (e.key === 'ArrowRight') {
+              nextSlide();
+            }
+          });
+          
+          // Touch/swipe support for mobile
+          let startX = 0;
+          let endX = 0;
+          
+          carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+          });
+          
+          carousel.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+          });
+          
+          function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+              if (diff > 0) {
+                nextSlide();
+              } else {
+                prevSlide();
+              }
+            }
+          }
+          
+          // Pause auto-play on hover
+          carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+          });
+          
+          carousel.addEventListener('mouseleave', () => {
+            startAutoPlay();
+          });
+          
+          // Initialize
+          initCarousel();
+        });
+      </script>
+   
+   	
+   	<section class="modern-gallery-section">
+     
+      
+      <div class="container">
+        <div class="gallery-header">
+          <h2 class="gallery-title">Memories</h2>
+          <p class="gallery-subtitle">Capturing moments that inspire</p>
+        </div>
+        
+        <div class="gallery-container">
+          <div class="photo-gallery">
+            <div class="gallery-item" data-image="images/2009_08220011s.jpg">
+              <div class="gallery-image" style="background-image: url(images/2009_08220011s.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/2009_08220050s.jpg">
+              <div class="gallery-image" style="background-image: url(images/2009_08220050s.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/2009_08220085s.jpg">
+              <div class="gallery-image" style="background-image: url(images/2009_08220085s.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/DSC_0097.jpg">
+              <div class="gallery-image" style="background-image: url(images/DSC_0097.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/DSC_0042.jpg">
+              <div class="gallery-image" style="background-image: url(images/DSC_0042.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/DSC_0053.jpg">
+              <div class="gallery-image" style="background-image: url(images/DSC_0053.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/IMG_7367.jpg">
+              <div class="gallery-image" style="background-image: url(images/IMG_7367.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/IMG_7097.jpg">
+              <div class="gallery-image" style="background-image: url(images/IMG_7097.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/DSC_0071.jpg">
+              <div class="gallery-image" style="background-image: url(images/DSC_0071.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/DSC_0138.jpg">
+              <div class="gallery-image" style="background-image: url(images/DSC_0138.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/DSC_4100.jpg">
+              <div class="gallery-image" style="background-image: url(images/DSC_4100.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/IMG_7274.jpg">
+              <div class="gallery-image" style="background-image: url(images/IMG_7274.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/IMG_7289.jpg">
+              <div class="gallery-image" style="background-image: url(images/IMG_7289.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-image="images/IMG_7320.jpg">
+              <div class="gallery-image" style="background-image: url(images/IMG_7320.jpg);"></div>
+              <div class="gallery-overlay">
+                <div class="gallery-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+     
+      
+      <!-- Lightbox Modal -->
+      <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="">
+        <div class="lightbox-nav">
+          <button class="lightbox-prev">&#10094;</button>
+          <button class="lightbox-next">&#10095;</button>
         </div>
       </div>
     </section>
@@ -469,8 +1769,8 @@
               <p>Make sure to keep up to date on our social media! <br></p>
                 <p >&#8595;&#8595;&#8595;</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="https://www.instagram.com/fireservicewomenofil/"><span class="icon-instagram"></span></a></li>
-                <li class="ftco-animate"><a href="https://www.facebook.com/FireServiceWomenofIllinios/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate" data-animate-effect="fadeInUp"><a href="https://www.instagram.com/fireservicewomenofil/"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate" data-animate-effect="fadeInUp"><a href="https://www.facebook.com/FireServiceWomenofIllinios/"><span class="icon-facebook"></span></a></li>
                 
               </ul>
             </div>
@@ -510,9 +1810,9 @@
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site made with <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <p><!-- Link back to Mitchf.dev@gmail.com can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site made by Mitchf.dev@gmail.com
+  <!-- Link back to Mitchf.dev@gmail.com can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
       </div>
@@ -539,7 +1839,7 @@
   <script src="js/jquery.stellar.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
+  <!-- <script src="js/aos.js"></script> -->
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
@@ -555,12 +1855,23 @@
     
     // Show modal when page loads
     window.onload = function() {
-      modal.style.display = "block";
+      // Hide the loader as a fallback
+      var loader = document.getElementById('ftco-loader');
+      if (loader) {
+        loader.classList.remove('show');
+      }
+      
+      // Show the modal
+      if (modal) {
+        modal.style.display = "block";
+      }
     }
     
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
+    if (span) {
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
     }
     
     // When the user clicks anywhere outside of the modal, close it
@@ -569,6 +1880,266 @@
         modal.style.display = "none";
       }
     }
+    
+    // Debug: Check if waypoint animations are working
+    setTimeout(function() {
+      console.log('Checking waypoint animations...');
+      var animateElements = document.querySelectorAll('.ftco-animate');
+      console.log('Found', animateElements.length, 'animate elements');
+      
+      // Check if jQuery and waypoints are loaded
+      if (typeof $ !== 'undefined' && $.fn.waypoint) {
+        console.log('jQuery and waypoints are loaded');
+        // Manually trigger waypoint check
+        $('.ftco-animate').waypoint('refresh');
+        
+        // Force refresh all waypoints
+        if (typeof Waypoint !== 'undefined') {
+          Waypoint.refreshAll();
+        }
+      } else {
+        console.log('jQuery or waypoints not loaded');
+      }
+    }, 1000);
+    
+    // Additional fallback to hide loader after 2 seconds
+    setTimeout(function() {
+      var loader = document.getElementById('ftco-loader');
+      if (loader) {
+        loader.classList.remove('show');
+      }
+    }, 2000);
+    
+    // Force refresh waypoints after page is fully loaded
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        if (typeof $ !== 'undefined' && $.fn.waypoint) {
+          console.log('Forcing waypoint refresh after page load');
+          $('.ftco-animate').waypoint('refresh');
+          if (typeof Waypoint !== 'undefined') {
+            Waypoint.refreshAll();
+          }
+        }
+      }, 500);
+    });
+    
+    // Fallback to make all ftco-animate elements visible only if they're still hidden after 5 seconds
+    setTimeout(function() {
+      var animateElements = document.querySelectorAll('.ftco-animate');
+      console.log('Fallback triggered - found', animateElements.length, 'animate elements');
+      animateElements.forEach(function(el) {
+        // Only make visible if they don't have the ftco-animated class (meaning scroll animation didn't trigger)
+        if (!el.classList.contains('ftco-animated')) {
+          console.log('Making element visible:', el);
+          el.style.opacity = '1';
+          el.style.visibility = 'visible';
+          el.classList.add('ftco-animated');
+        }
+      });
+    }, 5000);
+
+    // Modern Gallery Lightbox Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.querySelector('.lightbox-close');
+      const lightboxPrev = document.querySelector('.lightbox-prev');
+      const lightboxNext = document.querySelector('.lightbox-next');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const photoGallery = document.querySelector('.photo-gallery');
+      const toggleBtns = document.querySelectorAll('.toggle-btn');
+      const navItems = document.querySelectorAll('.nav-item');
+      
+      let currentImageIndex = 0;
+      const images = Array.from(galleryItems).map(item => item.getAttribute('data-image'));
+      let isRandomMode = false;
+      
+      // Toggle functionality
+      toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          toggleBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          if (this.textContent === 'Random') {
+            isRandomMode = true;
+            shuffleGallery();
+          } else {
+            isRandomMode = false;
+            resetGallery();
+          }
+        });
+      });
+      
+      // Navigation functionality
+      navItems.forEach(item => {
+        item.addEventListener('click', function() {
+          // Add smooth scroll to sections or handle navigation
+          console.log('Navigating to:', this.textContent);
+        });
+      });
+      
+      // Shuffle gallery items
+      function shuffleGallery() {
+        const items = Array.from(galleryItems);
+        const shuffled = items.sort(() => Math.random() - 0.5);
+        
+        shuffled.forEach((item, index) => {
+          item.style.order = index;
+          item.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        });
+      }
+      
+      // Reset gallery to original order
+      function resetGallery() {
+        galleryItems.forEach((item, index) => {
+          item.style.order = '';
+          item.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        });
+      }
+      
+      // Staggered entrance animations
+      function animateGalleryEntrance() {
+        galleryItems.forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(30px)';
+          item.style.transition = `all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
+          
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0px)';
+          }, 100 + index * 100);
+        });
+      }
+      
+      // Initialize entrance animation
+      animateGalleryEntrance();
+      
+      // Open lightbox when clicking on gallery item
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+          currentImageIndex = index;
+          openLightbox(images[currentImageIndex]);
+        });
+      });
+      
+      // Close lightbox
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      
+      // Navigation
+      lightboxPrev.addEventListener('click', function() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updateLightboxImage(images[currentImageIndex]);
+      });
+      
+      lightboxNext.addEventListener('click', function() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateLightboxImage(images[currentImageIndex]);
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (lightbox.style.display === 'block') {
+          switch(e.key) {
+            case 'Escape':
+              closeLightbox();
+              break;
+            case 'ArrowLeft':
+              currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+              updateLightboxImage(images[currentImageIndex]);
+              break;
+            case 'ArrowRight':
+              currentImageIndex = (currentImageIndex + 1) % images.length;
+              updateLightboxImage(images[currentImageIndex]);
+              break;
+          }
+        }
+      });
+      
+      // Optimized lightbox functions
+      function openLightbox(imageSrc) {
+        lightboxImg.src = imageSrc;
+        lightbox.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // Smooth fade-in animation
+        lightbox.style.opacity = '0';
+        lightboxImg.style.transform = 'scale(0.95)';
+        
+        setTimeout(() => {
+          lightbox.style.opacity = '1';
+          lightboxImg.style.transform = 'scale(1)';
+        }, 10);
+      }
+      
+      function closeLightbox() {
+        lightbox.style.opacity = '0';
+        lightboxImg.style.transform = 'scale(0.95)';
+        
+        setTimeout(() => {
+          lightbox.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          lightboxImg.style.transform = 'scale(1)';
+        }, 300);
+      }
+      
+      function updateLightboxImage(imageSrc) {
+        lightboxImg.style.opacity = '0';
+        lightboxImg.style.transform = 'scale(0.95)';
+        
+        setTimeout(() => {
+          lightboxImg.src = imageSrc;
+          lightboxImg.style.opacity = '1';
+          lightboxImg.style.transform = 'scale(1)';
+        }, 150);
+      }
+      
+      // Add smooth transitions
+      lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      
+      // Hover effects for gallery items
+      galleryItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px) scale(1.02)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0px) scale(1)';
+        });
+      });
+      
+      // Smooth scroll for navigation
+      function smoothScrollTo(element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+      
+      // Add intersection observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0px)';
+          }
+        });
+      }, observerOptions);
+      
+      // Observe gallery items for scroll animations
+      galleryItems.forEach(item => {
+        observer.observe(item);
+      });
+    });
   </script>
   </body>
 </html>
