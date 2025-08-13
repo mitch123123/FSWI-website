@@ -25,9 +25,435 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modern-support.css">
     
     <style>
-     
+      /* Contact Page Specific Styles */
+      .contact-hero-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 120px 0 80px;
+        position: relative;
+        overflow: hidden;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .contact-hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      .contact-hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        background: linear-gradient(45deg, #1b3ac6, #55e3e3, #1b3ac6);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 3s ease infinite;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .contact-hero-subtitle {
+        font-size: 1.3rem;
+        color: #666;
+        font-weight: 300;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+        position: relative;
+      }
+
+      .contact-hero-subtitle::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #1b3ac6, #55e3e3);
+        border-radius: 2px;
+      }
+
+      /* Contact Form Section */
+      .contact-form-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-form-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          radial-gradient(circle at 80% 80%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 20% 20%, rgba(255, 119, 198, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .contact-form-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+      }
+
+      .contact-form-card:hover {
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .contact-form-card h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #333;
+        text-align: center;
+      }
+
+      .contact-form-card .form-group {
+        margin-bottom: 25px;
+      }
+
+      .contact-form-card .form-control {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        padding: 15px 20px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .contact-form-card .form-control:focus {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: #1b3ac6;
+        box-shadow: 0 0 0 3px rgba(27, 58, 198, 0.1);
+        outline: none;
+      }
+
+      .contact-form-card textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .contact-form-card .btn-primary {
+        background: linear-gradient(45deg, #1b3ac6, #55e3e3);
+        border: none;
+        border-radius: 50px;
+        padding: 15px 40px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(27, 58, 198, 0.3);
+      }
+
+      .contact-form-card .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(27, 58, 198, 0.4);
+      }
+
+      /* Contact Info Cards */
+      .contact-info-section {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-info-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          radial-gradient(circle at 60% 60%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(255, 119, 198, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .contact-info-title {
+        font-size: 3rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, #1b3ac6, #55e3e3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .contact-info-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        text-align: center;
+        margin-bottom: 60px;
+        font-weight: 300;
+      }
+
+      .contact-info-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 40px 30px;
+        height: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .contact-info-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .contact-info-card .icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #1b3ac6, #55e3e3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        font-size: 35px;
+        color: white;
+        box-shadow: 0 10px 30px rgba(27, 58, 198, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .contact-info-card:hover .icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 15px 40px rgba(27, 58, 198, 0.4);
+      }
+
+      .contact-info-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .contact-info-card p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 0;
+      }
+
+      .contact-info-card a {
+        color: #1b3ac6;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .contact-info-card a:hover {
+        color: #55e3e3;
+        text-decoration: none;
+      }
+
+      /* Contact Info Sidebar */
+      .contact-info-sidebar {
+        position: relative;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 40px;
+        height: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+      }
+
+      .contact-info-sidebar:hover {
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .contact-info-sidebar .contact-info-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: left;
+        background: linear-gradient(45deg, #1b3ac6, #55e3e3);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .contact-info-sidebar .contact-info-subtitle {
+        font-size: 1rem;
+        color: #666;
+        text-align: left;
+        margin-bottom: 40px;
+        font-weight: 300;
+      }
+
+      .contact-info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .contact-info-item:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: translateX(5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-info-item .icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #1b3ac6, #55e3e3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+        box-shadow: 0 5px 15px rgba(27, 58, 198, 0.3);
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .contact-info-item:hover .icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 8px 20px rgba(27, 58, 198, 0.4);
+      }
+
+      .contact-info-item .content {
+        flex: 1;
+      }
+
+      .contact-info-item h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .contact-info-item p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #666;
+        margin-bottom: 0;
+      }
+
+      .contact-info-item a {
+        color: #1b3ac6;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .contact-info-item a:hover {
+        color: #55e3e3;
+        text-decoration: none;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .contact-hero-title {
+          font-size: 2.5rem;
+        }
+        
+        .contact-form-card {
+          padding: 30px 25px;
+        }
+        
+        .contact-info-sidebar {
+          padding: 30px 25px;
+          margin-top: 30px;
+        }
+        
+        .contact-info-sidebar .contact-info-title {
+          font-size: 1.8rem;
+          text-align: center;
+        }
+        
+        .contact-info-sidebar .contact-info-subtitle {
+          text-align: center;
+        }
+        
+        .contact-info-item {
+          padding: 15px;
+          gap: 15px;
+        }
+        
+        .contact-info-item .icon {
+          width: 45px;
+          height: 45px;
+          font-size: 18px;
+        }
+        
+        .contact-info-card {
+          padding: 30px 20px;
+          margin-bottom: 30px;
+        }
+        
+        .contact-info-card .icon {
+          width: 60px;
+          height: 60px;
+          font-size: 25px;
+        }
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -50,23 +476,26 @@
 	  </nav>
     <!-- END nav -->
     
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/a2.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
+    <!-- Contact Hero Section -->
+    <section class="contact-hero-section">
       <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
-          <div class="col-md-9 ftco-animate pb-5 text-center">
-            <h2 style = "padding-bottom: 100px;" class="mb-3 bread">Contact Us</h2>
-            
+        <div class="row">
+          <div class="col-12">
+            <div class="contact-hero-content">
+              <h1 class="contact-hero-title">Get In Touch</h1>
+              <p class="contact-hero-subtitle">We're here to support and empower fire service women across Illinois. Let's start a conversation about how we can help you or your department.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
     <!-- Contact Form Section -->
     <section class="contact-form-section">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="form-container">
+          <div class="col-lg-7">
+            <div class="contact-form-card">
               <h2>Send Us a Message</h2>
               <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 <p class="hidden">
@@ -74,11 +503,17 @@
                     Don't fill this out if you're human: <input name="bot-field" />
                   </label>
                 </p>
-                <div class="form-group">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                  <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <input type="text" name="subject" class="form-control" placeholder="Subject" required>
@@ -93,65 +528,44 @@
             </div>
           </div>
           
-          <div class="col-lg-6">
-            <div class="image-container">
-              <div class="image-overlay">
-                <h3>Ready to Connect?</h3>
-                <p>We're here to support and empower fire service women across Illinois. Let's start a conversation about how we can help you or your department.</p>
+          <div class="col-lg-5">
+            <div class="contact-info-sidebar">
+              <h3 class="contact-info-title">Contact Information</h3>
+              <p class="contact-info-subtitle">We'd love to hear from you. Reach out to us through any of these channels.</p>
+              
+              <div class="contact-info-list">
+                <div class="contact-info-item">
+                  <div class="icon">
+                    <span class="icon-map-signs"></span>
+                  </div>
+                  <div class="content">
+                    <h4>Address</h4>
+                    <p>P.O. Box 2153<br>Montgomery, IL 60538 USA</p>
+                  </div>
+                </div>
+                
+                <div class="contact-info-item">
+                  <div class="icon">
+                    <span class="icon-phone2"></span>
+                  </div>
+                  <div class="content">
+                    <h4>Phone</h4>
+                    <p><a href="tel://2246677782">224-667-7782</a></p>
+                  </div>
+                </div>
+                
+                <div class="contact-info-item">
+                  <div class="icon">
+                    <span class="icon-paper-plane"></span>
+                  </div>
+                  <div class="content">
+                    <h4>Email</h4>
+                    <p><a href="mailto:fswiinfo@gmail.com">fswiinfo@gmail.com</a></p>
+                  </div>
+                </div>
+                
+                
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Information Section -->
-    <section class="contact-info-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center mb-5">
-            <h2 class="text-white" style="font-size: 2.5rem; font-weight: 700;">Get In Touch</h2>
-            <p class="text-white-50" style="font-size: 1.1rem;">We'd love to hear from you. Reach out to us through any of these channels.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <div class="contact-card">
-              <div class="icon">
-                <span class="icon-map-signs"></span>
-              </div>
-              <h3>Address</h3>
-              <p>P.O. Box 2153<br>Montgomery, IL 60538 USA</p>
-            </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-6">
-            <div class="contact-card">
-              <div class="icon">
-                <span class="icon-phone2"></span>
-              </div>
-              <h3>Phone</h3>
-              <p><a href="tel://2246677782">224-667-7782</a></p>
-            </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-6">
-            <div class="contact-card">
-              <div class="icon">
-                <span class="icon-paper-plane"></span>
-              </div>
-              <h3>Email</h3>
-              <p><a href="mailto:fswiinfo@gmail.com">fswiinfo@gmail.com</a></p>
-            </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-6">
-            <div class="contact-card">
-              <div class="icon">
-                <span class="icon-globe"></span>
-              </div>
-              <h3>Website</h3>
-              <p><a href="www.fswi.org">fswi.org</a></p>
             </div>
           </div>
         </div>
