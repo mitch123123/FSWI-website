@@ -216,94 +216,14 @@
         transform: scale(1);
       }
 
-      /* Navigation */
-      .gallery-nav {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 40px;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
+      
 
-      .nav-item {
-        font-size: 0.8rem;
-        font-weight: 400;
-        color: #999;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: 'Nunito Sans', sans-serif;
-        position: relative;
-      }
+    
 
-      .nav-item:hover {
-        color: #2c2c2c;
-      }
+     
 
-      .nav-item::before {
-        content: '';
-        position: absolute;
-        right: -20px;
-        top: 50%;
-        width: 0;
-        height: 1px;
-        background: #2c2c2c;
-        transition: width 0.3s ease;
-      }
 
-      .nav-item:hover::before {
-        width: 15px;
-      }
-
-      /* Footer */
-      .gallery-footer {
-        position: fixed;
-        bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        z-index: 1000;
-      }
-
-      .footer-text {
-        font-size: 0.9rem;
-        color: #666;
-        font-family: 'Georgia', serif;
-        font-style: italic;
-        margin-bottom: 20px;
-        max-width: 400px;
-        line-height: 1.6;
-      }
-
-      .view-toggle {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .toggle-btn {
-        font-size: 0.8rem;
-        font-weight: 400;
-        color: #999;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: 'Nunito Sans', sans-serif;
-        padding: 10px 0;
-        border-bottom: 1px solid transparent;
-      }
-
-      .toggle-btn.active {
-        color: #2c2c2c;
-        border-bottom-color: #2c2c2c;
-      }
-
+      
       /* Enhanced Lightbox */
       .lightbox {
         display: none;
@@ -898,145 +818,142 @@
     </style>
 
     <!-- Training Ideas Section -->
-    <section class="ftco-section ftco-no-pt ftco-no-pb bg-light" style="margin-top: 25px; margin-bottom: 25px;">
-      <div class="container" >
+    <section class="ftco-section ftco-no-pt ftco-no-pb" style="margin-top: 25px; margin-bottom: 25px; position: relative; overflow: hidden;">
+      <!-- Animated Background -->
+      <div class="training-bg-animation"></div>
+      
+      <div class="container" style="position: relative; z-index: 2;">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 heading-section text-center ftco-animate" data-animate-effect="fadeInUp">
-            <span class="subheading">Professional Development</span>
-            <h2 class="mb-4">Training Ideas for Fire Service Women</h2>
-            <p>Empowering women in the fire service through specialized training and skill development</p>
+            <span class="subheading" style="color: #667eea; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Professional Development</span>
+            <h2 class="mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">Training Ideas for Fire Service Women</h2>
+            <p style="color: #666; font-size: 1.1rem; line-height: 1.6;">Empowering women in the fire service through specialized training and skill development</p>
           </div>
         </div>
         
         <div class="row">
           <!-- Physical Fitness & Conditioning -->
           <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
-            <div class="training-card card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="training-icon mb-3 text-center">
-                  <i class="icon-heart" style="font-size: 3rem; color: #007bff;"></i>
+            <div class="training-card-modern">
+              <div class="card-glow"></div>
+              <div class="card-content">
+                <div class="training-icon-modern">
+                  <i class="icon-heart"></i>
                 </div>
-                <h4 class="card-title text-center mb-3">Physical Fitness & Conditioning</h4>
-                <ul class="training-list">
+                <h4 class="card-title-modern">Physical Fitness & Conditioning</h4>
+                <ul class="training-list-modern">
                   <li>Strength training for firefighting tasks</li>
                   <li>Cardiovascular endurance building</li>
                   <li>Functional movement training</li>
                   <li>Proper lifting techniques</li>
                   <li>Nutrition for performance</li>
                 </ul>
-                <div class="training-level mt-3">
-                  <span class="badge badge-success">All Levels</span>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <!-- Leadership Development -->
           <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
-            <div class="training-card card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="training-icon mb-3 text-center">
-                  <i class="icon-star" style="font-size: 3rem; color: #28a745;"></i>
+            <div class="training-card-modern">
+              <div class="card-glow"></div>
+              <div class="card-content">
+                <div class="training-icon-modern">
+                  <i class="icon-star"></i>
                 </div>
-                <h4 class="card-title text-center mb-3">Leadership Development</h4>
-                <ul class="training-list">
+                <h4 class="card-title-modern">Leadership Development</h4>
+                <ul class="training-list-modern">
                   <li>Command presence and communication</li>
                   <li>Decision-making under pressure</li>
                   <li>Team building and motivation</li>
                   <li>Conflict resolution skills</li>
                   <li>Mentoring and coaching</li>
                 </ul>
-                <div class="training-level mt-3">
-                  <span class="badge badge-warning">Intermediate+</span>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <!-- Technical Skills -->
           <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
-            <div class="training-card card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="training-icon mb-3 text-center">
-                  <i class="icon-tools" style="font-size: 3rem; color: #dc3545;"></i>
+            <div class="training-card-modern">
+              <div class="card-glow"></div>
+              <div class="card-content">
+                <div class="training-icon-modern">
+                  <i class="icon-wrench"></i>
                 </div>
-                <h4 class="card-title text-center mb-3">Technical Skills</h4>
-                <ul class="training-list">
+                <h4 class="card-title-modern">Technical Skills</h4>
+                <ul class="training-list-modern">
                   <li>Advanced firefighting techniques</li>
                   <li>Hazmat operations</li>
                   <li>Technical rescue operations</li>
                   <li>Fire investigation basics</li>
                   <li>Equipment maintenance</li>
                 </ul>
-                <div class="training-level mt-3">
-                  <span class="badge badge-info">All Levels</span>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <!-- Mental Health & Wellness -->
           <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
-            <div class="training-card card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="training-icon mb-3 text-center">
-                  <i class="icon-heart" style="font-size: 3rem; color: #6f42c1;"></i>
+            <div class="training-card-modern">
+              <div class="card-glow"></div>
+              <div class="card-content">
+                <div class="training-icon-modern">
+                  <i class="icon-heart"></i>
                 </div>
-                <h4 class="card-title text-center mb-3">Mental Health & Wellness</h4>
-                <ul class="training-list">
+                <h4 class="card-title-modern">Mental Health & Wellness</h4>
+                <ul class="training-list-modern">
                   <li>Stress management techniques</li>
                   <li>PTSD awareness and prevention</li>
                   <li>Peer support programs</li>
                   <li>Work-life balance strategies</li>
                   <li>Resilience building</li>
                 </ul>
-                <div class="training-level mt-3">
-                  <span class="badge badge-primary">All Levels</span>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <!-- Career Advancement -->
           <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
-            <div class="training-card card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="training-icon mb-3 text-center">
-                  <i class="icon-trending-up" style="font-size: 3rem; color: #fd7e14;"></i>
+            <div class="training-card-modern">
+              <div class="card-glow"></div>
+              <div class="card-content">
+                <div class="training-icon-modern">
+                  <i class="icon-arrow-circle-up"></i>
                 </div>
-                <h4 class="card-title text-center mb-3">Career Advancement</h4>
-                <ul class="training-list">
+                <h4 class="card-title-modern">Career Advancement</h4>
+                <ul class="training-list-modern">
                   <li>Promotion preparation</li>
                   <li>Certification pathways</li>
                   <li>Professional networking</li>
                   <li>Continuing education</li>
                   <li>Specialization opportunities</li>
                 </ul>
-                <div class="training-level mt-3">
-                  <span class="badge badge-secondary">All Levels</span>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <!-- Community Outreach -->
           <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
-            <div class="training-card card border-0 shadow-sm h-100">
-              <div class="card-body p-4">
-                <div class="training-icon mb-3 text-center">
-                  <i class="icon-users" style="font-size: 3rem; color: #20c997;"></i>
+            <div class="training-card-modern">
+              <div class="card-glow"></div>
+              <div class="card-content">
+                <div class="training-icon-modern">
+                  <i class="icon-users"></i>
                 </div>
-                <h4 class="card-title text-center mb-3">Community Outreach</h4>
-                <ul class="training-list">
+                <h4 class="card-title-modern">Community Outreach</h4>
+                <ul class="training-list-modern">
                   <li>Public education programs</li>
                   <li>Fire prevention campaigns</li>
                   <li>School presentations</li>
                   <li>Community event planning</li>
                   <li>Media relations</li>
                 </ul>
-                <div class="training-level mt-3">
-                  <span class="badge badge-success">All Levels</span>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -1045,7 +962,7 @@
         <!-- Call to Action -->
         <div class="row justify-content-center mt-5">
           <div class="col-md-8 text-center">
-            <div class="training-cta p-4 bg-white rounded shadow-sm">
+            <div class="training-cta-modern">
               <h3 class="mb-3">Ready to Enhance Your Skills?</h3>
               <p class="mb-4">Join our training programs and connect with other fire service women who are passionate about professional development and excellence.</p>
               <a href="#contact" class="btn btn-modern-flashy py-3 px-5 mr-3">Contact Us</a>
@@ -1054,6 +971,248 @@
           </div>
         </div>
       </div>
+
+      <!-- Modern Training Section Styles -->
+      <style>
+        .training-bg-animation {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+          background-size: 400% 400%;
+          animation: gradientShift 12s ease infinite;
+          opacity: 0.03;
+          z-index: 1;
+          will-change: background-position;
+        }
+
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .training-card-modern {
+          position: relative;
+          background: rgba(255, 255, 255, 0.98);
+          border-radius: 20px;
+          padding: 2rem;
+          height: 100%;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          overflow: hidden;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        .training-card-modern:hover {
+          transform: translateY(-6px) translateZ(0);
+          box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .card-glow {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          opacity: 0;
+          transition: opacity 0.2s ease;
+          border-radius: 20px;
+          z-index: -1;
+          will-change: opacity;
+        }
+
+        .training-card-modern:hover .card-glow {
+          opacity: 0.05;
+        }
+
+        .training-icon-modern {
+          text-align: center;
+          margin-bottom: 1.5rem;
+          position: relative;
+        }
+
+        .training-icon-modern i {
+          font-size: 3.5rem;
+          color: #667eea;
+          transition: transform 0.2s ease;
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        .training-card-modern:hover .training-icon-modern i {
+          transform: scale(1.03) translateZ(0);
+          color: #764ba2;
+        }
+
+        .card-title-modern {
+          text-align: center;
+          margin-bottom: 1.5rem;
+          font-weight: 700;
+          font-size: 1.3rem;
+          color: #2c3e50;
+          transition: color 0.2s ease;
+        }
+
+        .training-card-modern:hover .card-title-modern {
+          color: #667eea;
+        }
+
+        .training-list-modern {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 1.5rem 0;
+        }
+
+        .training-list-modern li {
+          padding: 0.5rem 0;
+          color: #666;
+          font-size: 0.95rem;
+          position: relative;
+          padding-left: 1.5rem;
+          transition: color 0.2s ease;
+        }
+
+        .training-list-modern li::before {
+          content: '▶';
+          position: absolute;
+          left: 0;
+          color: #667eea;
+          font-size: 0.8rem;
+          transition: color 0.2s ease;
+        }
+
+        .training-card-modern:hover .training-list-modern li {
+          color: #2c3e50;
+        }
+
+        .training-card-modern:hover .training-list-modern li::before {
+          color: #764ba2;
+        }
+
+        .training-level-modern {
+          text-align: center;
+        }
+
+        .level-badge {
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border-radius: 25px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        .level-badge.intermediate {
+          background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+          box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+        }
+
+        .training-card-modern:hover .level-badge {
+          transform: scale(1.02) translateZ(0);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .training-cta-modern {
+          background: rgba(255, 255, 255, 0.98);
+          border-radius: 20px;
+          padding: 3rem;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+          position: relative;
+          overflow: hidden;
+          will-change: transform;
+          transform: translateZ(0);
+        }
+
+        .training-cta-modern::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          opacity: 0.03;
+          z-index: -1;
+        }
+
+        .training-cta-modern h3 {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 700;
+          font-size: 2rem;
+        }
+
+        .training-cta-modern p {
+          color: #666;
+          font-size: 1.1rem;
+          line-height: 1.6;
+        }
+
+        /* Performance optimizations */
+        .training-card-modern,
+        .training-cta-modern {
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+
+        /* Reduce animation complexity on mobile */
+        @media (max-width: 768px) {
+          .training-card-modern {
+            padding: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+          }
+          
+          .training-card-modern:hover {
+            transform: translateY(-4px) translateZ(0);
+          }
+          
+          .training-cta-modern {
+            padding: 2rem;
+          }
+          
+          .training-cta-modern h3 {
+            font-size: 1.5rem;
+          }
+          
+          .training-bg-animation {
+            animation: gradientShift 16s ease infinite;
+          }
+        }
+
+        /* Disable animations for users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .training-bg-animation {
+            animation: none;
+          }
+          
+          .training-card-modern,
+          .training-icon-modern i,
+          .training-list-modern li::before,
+          .level-badge {
+            transition: none;
+          }
+          
+          .training-card-modern:hover {
+            transform: none;
+          }
+        }
+      </style>
     </section>
 
     <section class="ftco-mission">
