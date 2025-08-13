@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
   </head>
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -36,7 +37,9 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>        	
+	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>   
+            <li class="nav-item"><a href="documents.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="schedule.html" class="nav-link">Training Schedule</a></li>     	
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
@@ -137,15 +140,43 @@
 #openFlyerBtn {
   display: none;
 }
+
+/* Ensure loader doesn't block content */
+#ftco-loader {
+  z-index: 9998;
+}
+
+/* Ensure modal appears above loader */
+.modal {
+  z-index: 9999;
+}
+
+/* Gradient header style */
+.gradient-header {
+  background: linear-gradient(40deg, #1b3ac6 0%, #55e3e3 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+ 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: bold;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 </style>
 
     <div class="hero-wrap" style="background-image: url('images/a6.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-end" data-scrollax-parent="true">
-          <div class="col-md-6 order-md-last ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Fire Service Women of Illinois</h1>
-            <p><a href="#abt" class="btn btn-black py-3 px-4">Who are we</a></p>
+          <div class="col-md-6 order-md-last ftco-animate mt-5" data-scrollax=" properties: { translateY: '70%' }" data-animate-effect="fadeInRight">
+            <h1 class="mb-4 gradient-header" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Fire Service Women of Illinois</h1>
+            
           </div>
          
         </div>
@@ -161,7 +192,7 @@
     						<div class="text py-7 pl-md-4 pr-md-3">
                   <h2 style="color:rgb(255, 255, 255);background-color: rgba(0, 0, 0, 0.404)"class="mb-5">Follow us on social media for live updates!</h2>
     							<p style="color:white;background-color: rgba(0, 0, 0, 0.404)">We post new training sessions, get togethers, and pictures of the amazing FSWI!</p>
-    							<p><a href="https://www.facebook.com/FireServiceWomenofIllinios/" style="margin-left:33%;"class="btn btn-black py-3 px-5">Follow</a></p>
+    							<p><a href="https://www.facebook.com/FireServiceWomenofIllinios/" style="margin-left:33%;"class="btn btn-modern-flashy py-3 px-5">Follow</a></p>
     						</div>
     					</div>
     				</div>
@@ -171,7 +202,7 @@
     					<h2>Want to support the FSWI? Get some awesome merch from <a href="https://www.etsy.com/shop/FSWI?ref=shop_sugg">etsy!</a></h2>
     					<p>The Fire Service Women of Illinois also have a paypal donation box!     
               </p>
-    					<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=admin%40fswi.org&item_name=Fire+Service+Women+of+Ilinois+donation+box&currency_code=USD&source=url" class="btn btn-primary py-3 px-4">Donate now</a></p>
+    					<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=admin%40fswi.org&item_name=Fire+Service+Women+of+Ilinois+donation+box&currency_code=USD&source=url" class="btn btn-modern-flashy py-3 px-4">Donate now</a></p>
     				</div>
     			</div>
     		</div>
@@ -188,7 +219,7 @@
     			<div id="abt"class="col-md-6 col-lg-7 pl-lg-5 py-5">
     				<div class="py-md-5">
 	    				<div class="row justify-content-start pb-3">
-			          <div class="col-md-12 heading-section ftco-animate">
+			          <div class="col-md-12 heading-section ftco-animate" data-animate-effect="fadeInUp">
 			          	<span  class="subheading"></a>A Few Words About Us</span>
 			            <h2 class="mb-4">We Have Been Helping Women For <span class="number" data-number="18">0</span> Years</h2>
 			            <p>The Fire Service Women of Illinois 
@@ -202,36 +233,404 @@
     	</div>
     </section>
 
-    <section class="services-section py-5 py-md-0 bg-light">
+    <section class="contact-info-section">
       <div class="container">
-        <div class="row no-gutters d-flex">
-          <div style="margin-left:15%;"class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block">
-              <div class="icon"><span class="flaticon-charity"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Help &amp; Support</h3>
-                <p>	We create a supportive community for all FSWI to interact and network</p>
+        <div class="row">
+          <div class="col-12 text-center mb-5">
+            <h2 class="text-white" style="font-size: 2.5rem; font-weight: 700;">What we do</h2>
+            <p class="text-white-50" style="font-size: 1.1rem;">Empowering women in fire service through support, education, and community</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="contact-card">
+              <div class="icon">
+                <span class="icon-envelope"></span>
               </div>
-            </div>      
+              <h3>Help &amp; Support</h3>
+              <p class="service-description">We create a supportive community for all FSWI to interact and network</p>
+              <ul class="feature-list">
+                <li>Peer mentoring programs</li>
+                <li>24/7 support network</li>
+                <li>Professional development</li>
+              </ul>
+            </div>
           </div>
           
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services  d-block">
-              <div class="icon"><span class="flaticon-volunteer"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Volunteering</h3>
-                <p>We also give back to the community </p>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="contact-card">
+              <div class="icon">
+                <span class="icon-heart"></span>
               </div>
-            </div>      
+              <h3>Volunteering</h3>
+              <p class="service-description">We also give back to the community</p>
+              <ul class="feature-list">
+                <li>Community outreach</li>
+                <li>Charity events</li>
+                <li>Public safety education</li>
+              </ul>
+            </div>
           </div>
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block">
-              <div class="icon"><span class="flaticon-open-book"></span></div>
-              <div class="media-body">
-                <h3 class="heading mb-3">Education</h3>
-                <p>We host training courses and meetups for you to be the best Firefighter you can be!</p>
+          
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="contact-card">
+              <div class="icon">
+                <span class="icon-graduation-cap"></span>
               </div>
-            </div>      
+              <h3>Education</h3>
+              <p class="service-description">We host training courses and meetups for you to be the best Firefighter you can be!</p>
+              <ul class="feature-list">
+                <li>Certification courses</li>
+                <li>Skill workshops</li>
+                <li>Leadership training</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb bg-white">
+      <div class="container" style="margin-top: 25px; margin-bottom: 25px;">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate" data-animate-effect="fadeInUp">
+            
+            <h2 class="mb-4">Meet Our Leadership</h2>
+            <p>Our dedicated board members work tirelessly to advance the mission of Fire Service Women of Illinois</p>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Board Member 1 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait1.jpg" alt="Sarah Johnson" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Sarah Johnson</h4>
+                      <p class="member-title">President</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Sarah Johnson</h4>
+                    <p class="member-title">President</p>
+                    <p class="member-bio">Sarah has been serving in the fire service for over 15 years. She is passionate about mentoring new firefighters and creating opportunities for women in the field. Sarah leads our organization with dedication and vision.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Training Coordinator</span>
+                      <span class="badge badge-secondary">Mentor</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 2 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait2.jpg" alt="Maria Rodriguez" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Maria Rodriguez</h4>
+                      <p class="member-title">Vice President</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Maria Rodriguez</h4>
+                    <p class="member-title">Vice President</p>
+                    <p class="member-bio">Maria brings 12 years of experience in emergency medical services and firefighting. She specializes in community outreach and developing partnerships with local fire departments across Illinois.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Community Outreach</span>
+                      <span class="badge badge-secondary">EMS Specialist</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 3 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait3.jpg" alt="Jennifer Williams" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Jennifer Williams</h4>
+                      <p class="member-title">Secretary</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Jennifer Williams</h4>
+                    <p class="member-title">Secretary</p>
+                    <p class="member-bio">Jennifer has been instrumental in organizing our events and maintaining communication with our members. Her background in administration and fire service spans over 10 years.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Event Coordinator</span>
+                      <span class="badge badge-secondary">Administrator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 4 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait4.jpg" alt="Amanda Thompson" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Amanda Thompson</h4>
+                      <p class="member-title">Treasurer</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Amanda Thompson</h4>
+                    <p class="member-title">Treasurer</p>
+                    <p class="member-bio">Amanda manages our organization's finances and fundraising efforts. With her background in both firefighting and financial management, she ensures our resources are used effectively to support our mission.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Finance Manager</span>
+                      <span class="badge badge-secondary">Fundraiser</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 5 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait5.jpg" alt="Lisa Chen" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Lisa Chen</h4>
+                      <p class="member-title">Board Member</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Lisa Chen</h4>
+                    <p class="member-title">Board Member</p>
+                    <p class="member-bio">Lisa focuses on professional development and continuing education programs. She has been a firefighter for 8 years and is committed to helping women advance their careers in the fire service.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Professional Development</span>
+                      <span class="badge badge-secondary">Educator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Board Member 6 -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="board-member-card card border-0 shadow-sm h-100">
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <!-- Front: Image -->
+                  <div class="flip-card-front">
+                    <img src="images/portrait6.jpg" alt="Rebecca Davis" class="member-photo">
+                    <div class="member-overlay">
+                      <h4 class="member-name">Rebecca Davis</h4>
+                      <p class="member-title">Board Member</p>
+                    </div>
+                  </div>
+                  <!-- Back: Description -->
+                  <div class="flip-card-back">
+                    <h4 class="member-name">Rebecca Davis</h4>
+                    <p class="member-title">Board Member</p>
+                    <p class="member-bio">Rebecca leads our networking initiatives and social media presence. She has 6 years of experience and is passionate about connecting women firefighters across the state.</p>
+                    <div class="member-badges">
+                      <span class="badge badge-primary mr-2">Networking</span>
+                      <span class="badge badge-secondary">Social Media</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+   
+    </style>
+
+    <!-- Training Ideas Section -->
+    <section class="ftco-section ftco-no-pt ftco-no-pb bg-light" style="margin-top: 25px; margin-bottom: 25px;">
+      <div class="container" >
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate" data-animate-effect="fadeInUp">
+            <span class="subheading">Professional Development</span>
+            <h2 class="mb-4">Training Ideas for Fire Service Women</h2>
+            <p>Empowering women in the fire service through specialized training and skill development</p>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Physical Fitness & Conditioning -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="training-card card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="training-icon mb-3 text-center">
+                  <i class="icon-heart" style="font-size: 3rem; color: #007bff;"></i>
+                </div>
+                <h4 class="card-title text-center mb-3">Physical Fitness & Conditioning</h4>
+                <ul class="training-list">
+                  <li>Strength training for firefighting tasks</li>
+                  <li>Cardiovascular endurance building</li>
+                  <li>Functional movement training</li>
+                  <li>Proper lifting techniques</li>
+                  <li>Nutrition for performance</li>
+                </ul>
+                <div class="training-level mt-3">
+                  <span class="badge badge-success">All Levels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leadership Development -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="training-card card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="training-icon mb-3 text-center">
+                  <i class="icon-star" style="font-size: 3rem; color: #28a745;"></i>
+                </div>
+                <h4 class="card-title text-center mb-3">Leadership Development</h4>
+                <ul class="training-list">
+                  <li>Command presence and communication</li>
+                  <li>Decision-making under pressure</li>
+                  <li>Team building and motivation</li>
+                  <li>Conflict resolution skills</li>
+                  <li>Mentoring and coaching</li>
+                </ul>
+                <div class="training-level mt-3">
+                  <span class="badge badge-warning">Intermediate+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technical Skills -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="training-card card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="training-icon mb-3 text-center">
+                  <i class="icon-tools" style="font-size: 3rem; color: #dc3545;"></i>
+                </div>
+                <h4 class="card-title text-center mb-3">Technical Skills</h4>
+                <ul class="training-list">
+                  <li>Advanced firefighting techniques</li>
+                  <li>Hazmat operations</li>
+                  <li>Technical rescue operations</li>
+                  <li>Fire investigation basics</li>
+                  <li>Equipment maintenance</li>
+                </ul>
+                <div class="training-level mt-3">
+                  <span class="badge badge-info">All Levels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mental Health & Wellness -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="training-card card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="training-icon mb-3 text-center">
+                  <i class="icon-heart" style="font-size: 3rem; color: #6f42c1;"></i>
+                </div>
+                <h4 class="card-title text-center mb-3">Mental Health & Wellness</h4>
+                <ul class="training-list">
+                  <li>Stress management techniques</li>
+                  <li>PTSD awareness and prevention</li>
+                  <li>Peer support programs</li>
+                  <li>Work-life balance strategies</li>
+                  <li>Resilience building</li>
+                </ul>
+                <div class="training-level mt-3">
+                  <span class="badge badge-primary">All Levels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Advancement -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="training-card card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="training-icon mb-3 text-center">
+                  <i class="icon-trending-up" style="font-size: 3rem; color: #fd7e14;"></i>
+                </div>
+                <h4 class="card-title text-center mb-3">Career Advancement</h4>
+                <ul class="training-list">
+                  <li>Promotion preparation</li>
+                  <li>Certification pathways</li>
+                  <li>Professional networking</li>
+                  <li>Continuing education</li>
+                  <li>Specialization opportunities</li>
+                </ul>
+                <div class="training-level mt-3">
+                  <span class="badge badge-secondary">All Levels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Community Outreach -->
+          <div class="col-md-6 col-lg-4 mb-4 ftco-animate" data-animate-effect="fadeInUp">
+            <div class="training-card card border-0 shadow-sm h-100">
+              <div class="card-body p-4">
+                <div class="training-icon mb-3 text-center">
+                  <i class="icon-users" style="font-size: 3rem; color: #20c997;"></i>
+                </div>
+                <h4 class="card-title text-center mb-3">Community Outreach</h4>
+                <ul class="training-list">
+                  <li>Public education programs</li>
+                  <li>Fire prevention campaigns</li>
+                  <li>School presentations</li>
+                  <li>Community event planning</li>
+                  <li>Media relations</li>
+                </ul>
+                <div class="training-level mt-3">
+                  <span class="badge badge-success">All Levels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-8 text-center">
+            <div class="training-cta p-4 bg-white rounded shadow-sm">
+              <h3 class="mb-3">Ready to Enhance Your Skills?</h3>
+              <p class="mb-4">Join our training programs and connect with other fire service women who are passionate about professional development and excellence.</p>
+              <a href="#contact" class="btn btn-modern-flashy py-3 px-5 mr-3">Contact Us</a>
+              <a href="https://www.facebook.com/FireServiceWomenofIllinios/" class="btn btn-modern-flashy py-3 px-5">Follow for Updates</a>
+            </div>
           </div>
         </div>
       </div>
@@ -240,7 +639,7 @@
     <section class="ftco-mission">
     	<div class="container">
     		<div class="row">
-    			<div class="col-md-4 py-4 py-md-5 ftco-animate">
+    			<div class="col-md-4 py-4 py-md-5 ftco-animate" data-animate-effect="fadeInUp">
     				<div class="py-md-4 pb-md-5">
 	    				<h3>Mission</h3>
 	    				<p>Fire Service Women of Illinois is dedicated to the advancement of education,
@@ -249,7 +648,7 @@
                 actively participate in shaping the future of the fire service through training.</p>
     				</div>
     			</div>
-    			<div class="col-md-4 py-4 py-md-5 ftco-animate">
+    			<div class="col-md-4 py-4 py-md-5 ftco-animate" data-animate-effect="fadeInUp">
     				<div class="py-md-4 pb-md-5">
 	    				<h3>Vision</h3>
 	    				<p>We would like to eventually have every Fire Service Women of Illinois be a part of our group!</p>
@@ -262,12 +661,12 @@
    	
    	<section class="testimony-section">
       <div class="container">
-        <div class="row ftco-animate justify-content-center">
+        <div class="row ftco-animate justify-content-center" data-animate-effect="fadeInUp">
         	<div class="col-md-6 d-flex">
         		<div class="testimony-img" style="background-image: url(images/a1tt2.png);margin-bottom: 30px;"></div>
         	</div>
           <div class="col-md-6 py-5">
-          	<div class="heading-section heading-section-white pt-4 ftco-animate">
+          	<div class="heading-section heading-section-white pt-4 ftco-animate" data-animate-effect="fadeInUp">
 		          <h2 class="mb-0">Memories</h2>
 		        </div>
             <div class="carousel-testimony owl-carousel ftco-owl">
@@ -469,8 +868,8 @@
               <p>Make sure to keep up to date on our social media! <br></p>
                 <p >&#8595;&#8595;&#8595;</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="https://www.instagram.com/fireservicewomenofil/"><span class="icon-instagram"></span></a></li>
-                <li class="ftco-animate"><a href="https://www.facebook.com/FireServiceWomenofIllinios/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate" data-animate-effect="fadeInUp"><a href="https://www.instagram.com/fireservicewomenofil/"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate" data-animate-effect="fadeInUp"><a href="https://www.facebook.com/FireServiceWomenofIllinios/"><span class="icon-facebook"></span></a></li>
                 
               </ul>
             </div>
@@ -510,9 +909,9 @@
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site made with <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <p><!-- Link back to Mitchf.dev@gmail.com can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site made by Mitchf.dev@gmail.com
+  <!-- Link back to Mitchf.dev@gmail.com can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
       </div>
@@ -539,7 +938,7 @@
   <script src="js/jquery.stellar.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
+  <!-- <script src="js/aos.js"></script> -->
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
@@ -555,12 +954,23 @@
     
     // Show modal when page loads
     window.onload = function() {
-      modal.style.display = "block";
+      // Hide the loader as a fallback
+      var loader = document.getElementById('ftco-loader');
+      if (loader) {
+        loader.classList.remove('show');
+      }
+      
+      // Show the modal
+      if (modal) {
+        modal.style.display = "block";
+      }
     }
     
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
+    if (span) {
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
     }
     
     // When the user clicks anywhere outside of the modal, close it
@@ -569,6 +979,63 @@
         modal.style.display = "none";
       }
     }
+    
+    // Debug: Check if waypoint animations are working
+    setTimeout(function() {
+      console.log('Checking waypoint animations...');
+      var animateElements = document.querySelectorAll('.ftco-animate');
+      console.log('Found', animateElements.length, 'animate elements');
+      
+      // Check if jQuery and waypoints are loaded
+      if (typeof $ !== 'undefined' && $.fn.waypoint) {
+        console.log('jQuery and waypoints are loaded');
+        // Manually trigger waypoint check
+        $('.ftco-animate').waypoint('refresh');
+        
+        // Force refresh all waypoints
+        if (typeof Waypoint !== 'undefined') {
+          Waypoint.refreshAll();
+        }
+      } else {
+        console.log('jQuery or waypoints not loaded');
+      }
+    }, 1000);
+    
+    // Additional fallback to hide loader after 2 seconds
+    setTimeout(function() {
+      var loader = document.getElementById('ftco-loader');
+      if (loader) {
+        loader.classList.remove('show');
+      }
+    }, 2000);
+    
+    // Force refresh waypoints after page is fully loaded
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        if (typeof $ !== 'undefined' && $.fn.waypoint) {
+          console.log('Forcing waypoint refresh after page load');
+          $('.ftco-animate').waypoint('refresh');
+          if (typeof Waypoint !== 'undefined') {
+            Waypoint.refreshAll();
+          }
+        }
+      }, 500);
+    });
+    
+    // Fallback to make all ftco-animate elements visible only if they're still hidden after 5 seconds
+    setTimeout(function() {
+      var animateElements = document.querySelectorAll('.ftco-animate');
+      console.log('Fallback triggered - found', animateElements.length, 'animate elements');
+      animateElements.forEach(function(el) {
+        // Only make visible if they don't have the ftco-animated class (meaning scroll animation didn't trigger)
+        if (!el.classList.contains('ftco-animated')) {
+          console.log('Making element visible:', el);
+          el.style.opacity = '1';
+          el.style.visibility = 'visible';
+          el.classList.add('ftco-animated');
+        }
+      });
+    }, 5000);
   </script>
   </body>
 </html>

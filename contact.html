@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+     
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -36,7 +40,9 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item "><a href="index.html" class="nav-link">Home</a></li>        	
+	        	<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>   
+            <li class="nav-item"><a href="documents.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="schedule.html" class="nav-link">Training Schedule</a></li>     	
 	          <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
@@ -55,112 +61,104 @@
         </div>
       </div>
     </section>
-    <section class="services-section py-5 py-md-0 bg-light">
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
       <div class="container">
-        <div class="row no-gutters d-flex">
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block">
-              <div class="col-md-3 d-flex">
-                <div class="align-self-stretch box p-4 py-md-5 text-center">
-                  <div class="icon d-flex align-items-center justify-content-center">
-                    <span class="icon-map-signs"></span>
-                  </div>
-                  <h3 class="mb-4">Address</h3>
-                  <p style="color:grey;">P.O. Box 2153 <br>
-                    Montgomery, IL 60538  USA</p>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-container">
+              <h2>Send Us a Message</h2>
+              <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <p class="hidden">
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </p>
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
-              </div>
-            </div>      
-          </div>
-          
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services  d-block">
-              <div class="col-md-3 d-flex">
-                <div class="align-self-stretch box p-4 py-md-5 text-center">
-                  <div class="icon d-flex align-items-center justify-content-center">
-                    <span class="icon-phone2"></span>
-                  </div>
-                  <h3 class="heading mb-3">Contact Number</h3>
-                  <p><a style="color:grey;" href="tel://2246677782">224-667-7782
-
-                  </a></p>
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                 </div>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block">
-                <div class="col-md-3 d-flex">
-              <div class="align-self-stretch box p-4 py-md-5 text-center">
-                <div class="icon d-flex align-items-center justify-content-center">
-                  <span class="icon-paper-plane"></span>
+                <div class="form-group">
+                  <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                 </div>
-                <h3 class="mb-4">Email Address</h3>
-                <p><a style="color:grey;"href="mailto:fswiinfo@gmail.com">fswiinfo@gmail.com</a></p>
-              </div>
-              </div>
-              </div>
-            </div>   
-            <div class="col-md-6 col-lg-3 d-flex align-self-stretch ftco-animate">
-              <div class="media block-6 services d-block">
-                  <div class="col-md-3 d-flex">
-                <div class="align-self-stretch box p-4 py-md-5 text-center">
-                  <div class="align-self-stretch box p-4 py-md-5 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center">
-                      <span class="icon-globe"></span>
-                    </div>
-                    <h3 class="mb-4">Website</h3>
-                    <p><a style="color:grey;" href="www.fswi.org">fswi.org</a></p>
-                  </div>
+                <div class="form-group">
+                  <textarea name="message" class="form-control" rows="6" placeholder="Your Message" required></textarea>
                 </div>
-                  </div>
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-primary">Send Message</button>
                 </div>
-              </div>     
-          </div>
-        </div>
-      </div>
-    </section>
-	
-			
-		<section class="ftco-section ftco-no-pt ftco-no-pb contact-section">
-      <div class="container-fluid px-0">
-        <div class="row no-gutters block-9">
-          <div class="col-md-6 order-md-last d-flex">
-            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="bg-light p-5 contact-form">
-              <p class="hidden">
-                <label>
-                  Don’t fill this out if you’re human: <input name="bot-field" />
-                </label>
-              </p>
-              <p class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Your Name">
-              </p>
-              <p class="form-group">
-                <input type="text"name="email" class="form-control" placeholder="Your Email">
-              </p>
-              <p class="form-group">
-                <input type="text" name="subject"class="form-control" placeholder="Subject">
-              </p>
-              <p class="form-group">
-                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-              </p>
-              <p class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-              </p>
-            </form>
-          
-          </div>
-
-          
-            <div class="col-md-6 order-md-last d-flex">
-                <div style="height:100%;width:100%;"class="row ftco-animate justify-content-center">
-              <div class="testimony-img" style="height: 85%;width:100%;background-image: url(images/a8n.jpg);background-size:cover;margin-bottom: 30px;"></div>
+              </form>
             </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <div class="image-container">
+              <div class="image-overlay">
+                <h3>Ready to Connect?</h3>
+                <p>We're here to support and empower fire service women across Illinois. Let's start a conversation about how we can help you or your department.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-   
 
+    <!-- Contact Information Section -->
+    <section class="contact-info-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center mb-5">
+            <h2 class="text-white" style="font-size: 2.5rem; font-weight: 700;">Get In Touch</h2>
+            <p class="text-white-50" style="font-size: 1.1rem;">We'd love to hear from you. Reach out to us through any of these channels.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="contact-card">
+              <div class="icon">
+                <span class="icon-map-signs"></span>
+              </div>
+              <h3>Address</h3>
+              <p>P.O. Box 2153<br>Montgomery, IL 60538 USA</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="contact-card">
+              <div class="icon">
+                <span class="icon-phone2"></span>
+              </div>
+              <h3>Phone</h3>
+              <p><a href="tel://2246677782">224-667-7782</a></p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="contact-card">
+              <div class="icon">
+                <span class="icon-paper-plane"></span>
+              </div>
+              <h3>Email</h3>
+              <p><a href="mailto:fswiinfo@gmail.com">fswiinfo@gmail.com</a></p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="contact-card">
+              <div class="icon">
+                <span class="icon-globe"></span>
+              </div>
+              <h3>Website</h3>
+              <p><a href="www.fswi.org">fswi.org</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
     <footer class="ftco-footer ftco-section">
       <div class="container">
         <div class="row mb-5">
@@ -211,9 +209,9 @@
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site made with <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site made by Mitchf.dev@gmail.com
+</p>
           </div>
         </div>
       </div>

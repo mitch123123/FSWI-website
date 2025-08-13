@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FSWI - Training Schedule</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+      .schedule-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+      }
+      
+      .event-list {
+        padding: 20px 0;
+      }
+      
+      .event-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      .event-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      
+      .event-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        position: relative;
+      }
+      
+      .event-date {
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 5px;
+      }
+      
+      .event-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+      }
+      
+      .event-category {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      
+      .event-body {
+        padding: 20px;
+      }
+      
+      .event-detail {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+      
+      .event-detail i {
+        width: 20px;
+        margin-right: 10px;
+        color: #667eea;
+      }
+      
+      .event-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      
+      .event-btn {
+        flex: 1;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .event-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+      
+      .event-btn.secondary {
+        background: #6c757d;
+      }
+      
+      .filters-section {
+        background: #f8f9fa;
+        padding: 20px 0;
+        margin-bottom: 20px;
+      }
+      
+      .filter-btn {
+        background: white;
+        border: 2px solid #667eea;
+        color: #667eea;
+        padding: 8px 15px;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: #667eea;
+        color: white;
+        transform: scale(1.05);
+      }
+      
+      .month-selector {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      
+      .month-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      
+      .month-nav button {
+        background: #667eea;
+        border: none;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+      
+      .month-nav button:hover {
+        background: #5a6fd8;
+        transform: scale(1.05);
+      }
+      
+      .current-month {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      .no-events {
+        text-align: center;
+        padding: 40px 20px;
+        color: #666;
+      }
+      
+      .no-events i {
+        font-size: 48px;
+        color: #ccc;
+        margin-bottom: 15px;
+        display: block;
+      }
+      
+      /* Admin Panel Styles for Mobile */
+      .admin-panel {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        padding: 20px;
+      }
+      
+      .admin-toggle {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+      
+      .admin-toggle:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+      
+      .admin-panel.hidden {
+        display: none;
+      }
+      
+      .event-form {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+      }
+      
+      .form-group {
+        margin-bottom: 15px;
+      }
+      
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+      }
+      
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+      }
+      
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+      
+      .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        flex: 1;
+      }
+      
+      .btn-secondary {
+        background: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        flex: 1;
+      }
+      
+      .btn-danger {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 12px;
+      }
+      
+      .events-list {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 15px;
+      }
+      
+      .event-item {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        border-left: 4px solid #667eea;
+      }
+      
+      .event-info h4 {
+        margin: 0 0 5px 0;
+        color: #333;
+        font-size: 16px;
+      }
+      
+      .event-info p {
+        margin: 0 0 5px 0;
+        color: #666;
+        font-size: 13px;
+      }
+      
+      .event-actions-admin {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      
+      .btn-sm {
+        padding: 8px 15px;
+        font-size: 12px;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="indexM.html">FSWI<img src="images/fswilogosmallt.png"  height="80" width="90"></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item"><a href="indexM.html" class="nav-link">Home</a></li>   
+            <li class="nav-item"><a href="documentsM.html" class="nav-link">Resources</a></li>
+            <li class="nav-item active"><a href="scheduleM.html" class="nav-link">Training Schedule</a></li>     	
+	          <li class="nav-item"><a href="contactM.html" class="nav-link">Contact</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <section class="schedule-hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="mb-3">Training Schedule</h1>
+            <p class="lead">Stay updated with FSWI's training events</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Month Selector -->
+    <section class="py-3">
+      <div class="container">
+        <div class="month-selector">
+          <div class="month-nav">
+            <button id="prevMonth"><i class="oi oi-chevron-left"></i></button>
+            <div class="current-month" id="currentMonth">January 2024</div>
+            <button id="nextMonth"><i class="oi oi-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h4 class="mb-3">Filter Events</h4>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="training">Training</button>
+              <button class="filter-btn" data-filter="meeting">Meetings</button>
+              <button class="filter-btn" data-filter="conference">Conferences</button>
+              <button class="filter-btn" data-filter="workshop">Workshops</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events List -->
+    <section class="event-list">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Admin Panel Toggle -->
+            <div class="text-center mb-4">
+              <button class="admin-toggle" onclick="toggleAdminPanel()">
+                <i class="oi oi-cog"></i> Manage Events
+              </button>
+            </div>
+            
+            <!-- Admin Panel -->
+            <div id="adminPanel" class="admin-panel hidden">
+              <h3 class="mb-4">Event Management</h3>
+              
+              <!-- Add/Edit Event Form -->
+              <div class="event-form">
+                <h4 id="formTitle">Add New Event</h4>
+                <form id="eventForm">
+                  <input type="hidden" id="eventId" value="">
+                  <div class="form-group">
+                    <label for="eventTitle">Event Title *</label>
+                    <input type="text" id="eventTitle" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventCategory">Category *</label>
+                    <select id="eventCategory" required>
+                      <option value="">Select Category</option>
+                      <option value="training">Training</option>
+                      <option value="meeting">Meeting</option>
+                      <option value="conference">Conference</option>
+                      <option value="workshop">Workshop</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventDate">Date *</label>
+                    <input type="date" id="eventDate" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventTime">Time *</label>
+                    <input type="text" id="eventTime" placeholder="e.g., 09:00 AM - 05:00 PM" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventLocation">Location *</label>
+                    <input type="text" id="eventLocation" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventInstructor">Instructor/Speaker</label>
+                    <input type="text" id="eventInstructor">
+                  </div>
+                  <div class="form-group">
+                    <label for="eventDescription">Description *</label>
+                    <textarea id="eventDescription" rows="3" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="eventAdditional">Additional Information</label>
+                    <textarea id="eventAdditional" rows="2"></textarea>
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Event</button>
+                    <button type="button" class="btn-secondary" onclick="resetForm()">Cancel</button>
+                  </div>
+                </form>
+              </div>
+              
+              <!-- Events List -->
+              <div class="events-list">
+                <h4>Current Events</h4>
+                <div id="eventsList">
+                  <!-- Events will be populated here -->
+                </div>
+              </div>
+            </div>
+            
+            <div id="eventsContainer">
+              <!-- Events will be populated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">FSWI</h2>
+              <p>Make sure to keep up to date on our social media! <br></p>
+                <p >&#8595;&#8595;&#8595;</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="https://www.instagram.com/fireservicewomenofil/"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/FireServiceWomenofIllinios/"><span class="icon-facebook"></span></a></li>
+                
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=admin%40fswi.org&item_name=Fire+Service+Women+of+Ilinois+donation+box&currency_code=USD&source=url" class="py-2 d-block">Donation</a></li>
+                <li><a href="documentsM.html" class="py-2 d-block">Documents</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Links</h2>
+              <ul class="list-unstyled">
+                <li><a href="indexM.html" class="py-2 d-block">Home</a></li>               
+                <li><a href="contactM.html" class="py-2 d-block">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">P.O. Box 2153 <br>
+                    Montgomery, IL 60538  USA</p></span></li>
+	               <!-- <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>-->
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">fswiinfo@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Mitchf.dev@gmail.com can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Site made by Mitchf.dev@gmail.com
+  <!-- Link back to Mitchf.dev@gmail.com can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    // Event management system
+    let events = JSON.parse(localStorage.getItem('fswi_events')) || [
+      {
+        id: 1,
+        title: "Firefighter Safety Training",
+        date: "2024-01-15",
+        time: "09:00 AM - 05:00 PM",
+        location: "FSWI Training Center, Chicago, IL",
+        instructor: "Captain Sarah Johnson",
+        description: "Comprehensive safety training covering personal protective equipment, scene safety, and emergency procedures.",
+        additional: "CEU credits available. Lunch provided. Bring your own PPE.",
+        category: "training"
+      },
+      {
+        id: 2,
+        title: "Leadership Development Workshop",
+        date: "2024-01-22",
+        time: "10:00 AM - 03:00 PM",
+        location: "Illinois Fire Chiefs Association, Springfield, IL",
+        instructor: "Chief Maria Rodriguez",
+        description: "Develop essential leadership skills for fire service professionals. Topics include team building, communication, and decision-making.",
+        additional: "Open to all ranks. Networking lunch included.",
+        category: "workshop"
+      },
+      {
+        id: 3,
+        title: "Monthly FSWI Meeting",
+        date: "2024-02-05",
+        time: "07:00 PM - 09:00 PM",
+        location: "Virtual Meeting (Zoom)",
+        instructor: "FSWI Board Members",
+        description: "Monthly membership meeting to discuss upcoming events, training opportunities, and organizational updates.",
+        additional: "Zoom link will be sent to members 24 hours before the meeting.",
+        category: "meeting"
+      },
+      {
+        id: 4,
+        title: "Emergency Medical Response Training",
+        date: "2024-02-12",
+        time: "08:00 AM - 04:00 PM",
+        location: "Regional Medical Center, Peoria, IL",
+        instructor: "Dr. Emily Chen",
+        description: "Advanced emergency medical response training with hands-on practice and certification renewal.",
+        additional: "Current EMT certification required. CEU credits provided.",
+        category: "training"
+      },
+      {
+        id: 5,
+        title: "Women in Fire Service Conference",
+        date: "2024-03-08",
+        time: "08:00 AM - 06:00 PM",
+        location: "Chicago Convention Center, Chicago, IL",
+        instructor: "Various Speakers",
+        description: "Annual conference celebrating women in the fire service with keynote speakers, workshops, and networking opportunities.",
+        additional: "Early bird registration available until February 15th. Hotel discounts available.",
+        category: "conference"
+      },
+      {
+        id: 6,
+        title: "Physical Fitness Workshop",
+        date: "2024-03-15",
+        time: "09:00 AM - 12:00 PM",
+        location: "FSWI Fitness Center, Rockford, IL",
+        instructor: "Fitness Specialist Lisa Thompson",
+        description: "Workshop focused on maintaining physical fitness standards and preparing for CPAT testing.",
+        additional: "Workout clothes required. Water provided.",
+        category: "workshop"
+      }
+    ];
+
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+    let currentFilter = 'all';
+    let nextEventId = Math.max(...events.map(e => e.id), 0) + 1;
+
+    // Save events to localStorage
+    function saveEvents() {
+      localStorage.setItem('fswi_events', JSON.stringify(events));
+    }
+
+    // Toggle admin panel
+    function toggleAdminPanel() {
+      const panel = document.getElementById('adminPanel');
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) {
+        renderEventsList();
+      }
+    }
+
+    // Reset form
+    function resetForm() {
+      document.getElementById('eventForm').reset();
+      document.getElementById('eventId').value = '';
+      document.getElementById('formTitle').textContent = 'Add New Event';
+    }
+
+    // Edit event
+    function editEvent(eventId) {
+      const event = events.find(e => e.id === eventId);
+      if (event) {
+        document.getElementById('eventId').value = event.id;
+        document.getElementById('eventTitle').value = event.title;
+        document.getElementById('eventCategory').value = event.category;
+        document.getElementById('eventDate').value = event.date;
+        document.getElementById('eventTime').value = event.time;
+        document.getElementById('eventLocation').value = event.location;
+        document.getElementById('eventInstructor').value = event.instructor || '';
+        document.getElementById('eventDescription').value = event.description;
+        document.getElementById('eventAdditional').value = event.additional || '';
+        document.getElementById('formTitle').textContent = 'Edit Event';
+      }
+    }
+
+    // Delete event
+    function deleteEvent(eventId) {
+      if (confirm('Are you sure you want to delete this event?')) {
+        events = events.filter(e => e.id !== eventId);
+        saveEvents();
+        renderEventsList();
+        renderEvents();
+      }
+    }
+
+    // Render events list in admin panel
+    function renderEventsList() {
+      const container = document.getElementById('eventsList');
+      container.innerHTML = '';
+
+      if (events.length === 0) {
+        container.innerHTML = '<p>No events found. Add your first event above!</p>';
+        return;
+      }
+
+      events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      events.forEach(event => {
+        const eventElement = document.createElement('div');
+        eventElement.className = 'event-item';
+        
+        const eventDate = new Date(event.date);
+        const formattedDate = eventDate.toLocaleDateString('en-US', { 
+          weekday: 'short', 
+          year: 'numeric', 
+          month: 'short', 
+          day: 'numeric' 
+        });
+
+        eventElement.innerHTML = `
+          <div class="event-info">
+            <h4>${event.title}</h4>
+            <p><strong>${formattedDate}</strong> | ${event.time} | ${event.category}</p>
+            <p>${event.location}</p>
+          </div>
+          <div class="event-actions-admin">
+            <button class="btn-secondary btn-sm" onclick="editEvent(${event.id})">Edit</button>
+            <button class="btn-danger btn-sm" onclick="deleteEvent(${event.id})">Delete</button>
+          </div>
+        `;
+        
+        container.appendChild(eventElement);
+      });
+    }
+
+    // Initialize mobile schedule
+    function initMobileSchedule() {
+      updateMonthHeader();
+      renderEvents();
+      setupEventListeners();
+    }
+
+    // Update month header
+    function updateMonthHeader() {
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+                         "July", "August", "September", "October", "November", "December"];
+      document.getElementById('currentMonth').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+    }
+
+    // Render events for current month
+    function renderEvents() {
+      const container = document.getElementById('eventsContainer');
+      container.innerHTML = '';
+
+      const monthEvents = events.filter(event => {
+        const eventDate = new Date(event.date);
+        return eventDate.getMonth() === currentMonth && 
+               eventDate.getFullYear() === currentYear &&
+               (currentFilter === 'all' || event.category === currentFilter);
+      });
+
+      if (monthEvents.length === 0) {
+        container.innerHTML = `
+          <div class="no-events">
+            <i class="oi oi-calendar"></i>
+            <h4>No events this month</h4>
+            <p>Check other months or try different filters</p>
+          </div>
+        `;
+        return;
+      }
+
+      monthEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      monthEvents.forEach(event => {
+        const eventCard = createEventCard(event);
+        container.appendChild(eventCard);
+      });
+    }
+
+    // Create event card
+    function createEventCard(event) {
+      const card = document.createElement('div');
+      card.className = 'event-card';
+      
+      const eventDate = new Date(event.date);
+      const formattedDate = eventDate.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+
+      card.innerHTML = `
+        <div class="event-header">
+          <div class="event-date">${formattedDate}</div>
+          <h3 class="event-title">${event.title}</h3>
+          <div class="event-category">${event.category}</div>
+        </div>
+        <div class="event-body">
+          <div class="event-detail">
+            <i class="oi oi-clock"></i>
+            <span>${event.time}</span>
+          </div>
+          <div class="event-detail">
+            <i class="oi oi-map-marker"></i>
+            <span>${event.location}</span>
+          </div>
+          <div class="event-detail">
+            <i class="oi oi-person"></i>
+            <span>${event.instructor}</span>
+          </div>
+          <div class="event-detail">
+            <i class="oi oi-document"></i>
+            <span>${event.description}</span>
+          </div>
+          <div class="event-detail">
+            <i class="oi oi-info"></i>
+            <span>${event.additional}</span>
+          </div>
+          <div class="event-actions">
+            <button class="event-btn" onclick="registerForEvent(${event.id})">Register</button>
+            <button class="event-btn secondary" onclick="addToCalendar(${event.id})">Add to Calendar</button>
+            <button class="event-btn secondary" onclick="shareEvent(${event.id})">Share</button>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    // Event actions
+    function registerForEvent(eventId) {
+      const event = events.find(e => e.id === eventId);
+      alert(`Registration for "${event.title}" will be implemented soon!`);
+    }
+
+    function addToCalendar(eventId) {
+      const event = events.find(e => e.id === eventId);
+      alert(`Calendar integration for "${event.title}" will be implemented soon!`);
+    }
+
+    function shareEvent(eventId) {
+      const event = events.find(e => e.id === eventId);
+      if (navigator.share) {
+        navigator.share({
+          title: event.title,
+          text: event.description,
+          url: window.location.href
+        });
+      } else {
+        const text = `${event.title}\n${event.description}`;
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Event details copied to clipboard!');
+        });
+      }
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      document.getElementById('prevMonth').addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+          currentMonth = 11;
+          currentYear--;
+        }
+        updateMonthHeader();
+        renderEvents();
+      });
+
+      document.getElementById('nextMonth').addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentMonth = 0;
+          currentYear++;
+        }
+        updateMonthHeader();
+        renderEvents();
+      });
+
+      // Filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          currentFilter = btn.getAttribute('data-filter');
+          renderEvents();
+        });
+      });
+
+      // Event form submission
+      document.getElementById('eventForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const eventId = document.getElementById('eventId').value;
+        const eventTitle = document.getElementById('eventTitle').value;
+        const eventCategory = document.getElementById('eventCategory').value;
+        const eventDate = document.getElementById('eventDate').value;
+        const eventTime = document.getElementById('eventTime').value;
+        const eventLocation = document.getElementById('eventLocation').value;
+        const eventInstructor = document.getElementById('eventInstructor').value;
+        const eventDescription = document.getElementById('eventDescription').value;
+        const eventAdditional = document.getElementById('eventAdditional').value;
+
+        if (eventId) { // Editing
+          const index = events.findIndex(e => e.id === parseInt(eventId));
+          if (index !== -1) {
+            events[index] = {
+              id: parseInt(eventId),
+              title: eventTitle,
+              category: eventCategory,
+              date: eventDate,
+              time: eventTime,
+              location: eventLocation,
+              instructor: eventInstructor,
+              description: eventDescription,
+              additional: eventAdditional
+            };
+            saveEvents();
+            renderEventsList();
+            renderEvents();
+            alert('Event updated successfully!');
+          } else {
+            alert('Event not found.');
+          }
+        } else { // Adding
+          const newEvent = {
+            id: nextEventId++,
+            title: eventTitle,
+            category: eventCategory,
+            date: eventDate,
+            time: eventTime,
+            location: eventLocation,
+            instructor: eventInstructor,
+            description: eventDescription,
+            additional: eventAdditional
+          };
+          events.push(newEvent);
+          saveEvents();
+          renderEventsList();
+          renderEvents();
+          alert('Event added successfully!');
+        }
+        resetForm();
+      });
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', initMobileSchedule);
+  </script>
+    
+  </body>
+</html> 

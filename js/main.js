@@ -1,7 +1,7 @@
- AOS.init({
- 	duration: 800,
- 	easing: 'slide'
- });
+// AOS.init({
+// 	duration: 800,
+// 	easing: 'slide'
+// });
 
 (function($) {
 
@@ -226,11 +226,14 @@
 
 	var contentWayPoint = function() {
 		var i = 0;
+		console.log('Setting up content waypoints...');
 		$('.ftco-animate').waypoint( function( direction ) {
+			console.log('Waypoint triggered:', direction, this.element);
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
 				
 				i++;
+				console.log('Animating element:', this.element, 'Count:', i);
 
 				$(this.element).addClass('item-animate');
 				setTimeout(function(){
@@ -239,6 +242,7 @@
 						var el = $(this);
 						setTimeout( function () {
 							var effect = el.data('animate-effect');
+							console.log('Applying effect:', effect, 'to element:', el[0]);
 							if ( effect === 'fadeIn') {
 								el.addClass('fadeIn ftco-animated');
 							} else if ( effect === 'fadeInLeft') {
@@ -257,8 +261,24 @@
 			}
 
 		} , { offset: '95%' } );
+		console.log('Content waypoints setup complete. Found', $('.ftco-animate').length, 'elements');
 	};
 	contentWayPoint();
+
+	// Test waypoints initialization
+	setTimeout(function() {
+		console.log('Testing waypoints initialization...');
+		console.log('jQuery loaded:', typeof $ !== 'undefined');
+		console.log('Waypoints loaded:', typeof $.fn.waypoint !== 'undefined');
+		console.log('FTCO animate elements found:', $('.ftco-animate').length);
+		console.log('Elements with ftco-animated class:', $('.ftco-animated').length);
+		
+		// Manually trigger a waypoint refresh
+		if (typeof $.fn.waypoint !== 'undefined') {
+			$('.ftco-animate').waypoint('refresh');
+			console.log('Waypoint refresh triggered');
+		}
+	}, 2000);
 
 
 	// navigation
@@ -349,9 +369,10 @@ document.getElementById('openFlyerBtn').onclick = function() {
 document.getElementById('closeFlyerBtn').onclick = function() {
   document.getElementById('flyerModal').style.display = 'none';
 };
-window.onclick = function(event) {
-  if (event.target == document.getElementById('flyerModal')) {
-    document.getElementById('flyerModal').style.display = 'none';
-  }
-};
+// Commented out to prevent conflict with index.html window.onclick
+// window.onclick = function(event) {
+//   if (event.target == document.getElementById('flyerModal')) {
+//     document.getElementById('flyerModal').style.display = 'none';
+//   }
+// };
 
