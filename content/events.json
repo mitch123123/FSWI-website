@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "title": "Firefighter Safety Training",
+    "date": "2024-01-15T09:00:00.000Z",
+    "time": "09:00 AM - 05:00 PM",
+    "location": "FSWI Training Center, Chicago, IL",
+    "instructor": "Captain Sarah Johnson",
+    "description": "Comprehensive safety training covering personal protective equipment, scene safety, and emergency procedures.",
+    "additional": "CEU credits available. Lunch provided. Bring your own PPE.",
+    "category": "training"
+  }
+]
